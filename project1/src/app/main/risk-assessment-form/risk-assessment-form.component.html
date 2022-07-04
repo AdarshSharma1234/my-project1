@@ -1,0 +1,539 @@
+
+ <div class="text-center text-2xl font-bold">
+
+</div>
+
+<div class="lg:flex mb-5 ">
+<div class="w-1/2 ">
+<img src="assets/img/search.svg" alt="" class="inline absolute mt-2 ml-2 w-6">
+<input type="search" placeholder="Search" class="outline-none border border-gray-300 py-2 pl-10 sm:w-full md:w-full lg:w-1/2 pr-3 rounded-lg ">
+</div>
+
+<div class="md:inline-block sm:inline-block lg:mr-4 ml-auto">
+<div class="flex -space-x-2 overflow-hidden">
+<div class="flex mt-3 ">
+<h1 class="bg-green-400 w-3 h-3 mt-2 mr-1 rounded-full"></h1>
+<span class=" mr-3"> online </span>
+</div>
+
+<img
+class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+alt=""
+/>
+<img
+class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+alt=""
+/>
+<img
+class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+alt=""
+/>
+<img
+class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+alt=""
+/>
+<img
+class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+alt=""
+/>
+</div>
+</div>
+</div>
+
+<div class="">
+<h1 class="text-sm font-semibold">My Clients / John doe <span class="text-gray-500 font-normal">/ Risk Assessment Form</span></h1>
+<h1 class="text-2xl text-[#292929] font-bold mt-4">Risk Assessment Form</h1>
+</div>
+
+<div class="bg-white p-2 shadow-lg mt-4">
+  <form  #userForm="ngForm" (ngSubmit)="userForm.form.valid && onsubmit(userForm)">
+
+   <div class="md:xl:ml-5 xl:mr-[4.5rem] ">
+
+     <h1 class="mt-4 font-semibold text-dark_brown">Detail</h1>
+
+     <div class="lg:grid md:grid-cols-3 grid-cols-2 space-x-12">
+     <div class="mt-5">
+       <label for="" class="text-gray-500 text-lg font-semibold">Name</label>
+     <div class="mb-3">
+     <input type="text" #name="ngModel" id="name" [(ngModel)]="user.name"  name="name" class=" input-text "
+      placeholder="search and select" [ngClass]="{ 'is-invalid': userForm.submitted && name.invalid }" required minlength="3" maxlength="20"  pattern="[A-Za-z]{1,20}">
+      <div *ngIf="userForm.submitted && name.invalid" class="Validationcolor">
+        <div *ngIf="name.errors?.['required']">name is required*</div>
+        <div *ngIf="name.errors?.['pattern']">
+          Enter character only{{name.errors?.['pattern'].requiredLength}}
+      </div>
+      <div *ngIf="name.errors?.['minlength']">
+      Minimum length is {{name.errors?.['minlength'].requiredLength}}
+      </div>
+      <div *ngIf="name.errors?.['maxlength']">
+       Maximum length is {{name.errors?.['maxlength'].requiredLength}}
+      </div>
+    </div>
+  </div>
+
+     </div>
+
+     <div class="mt-5" [class.has-error]="userForm.submitted && team.touched && team.invalid">
+     <label for="" class="text-gray-500 text-lg font-semibold">Team</label>
+
+     <div class="mb-3 ">
+     <select class=" input-text1" [(ngModel)]="user.team" name="team" #team="ngModel" id="team" required [ngClass]="{ 'is-invalid': userForm.submitted && team.invalid }">
+     <option selected>select teams</option>
+    <option class="py-1">B1</option>
+    <option class="py-1">B2</option>
+   <option class="py-1">B3</option>
+  </select>
+    <div *ngIf="userForm.submitted && team.invalid" class="Validationcolor">
+     <div *ngIf="team.errors?.['required']">Team in required*</div>
+    </div>
+   </div>
+   </div>
+
+    <div class="mt-5">
+    <label for="" class="text-gray-500 text-lg font-semibold">Date</label>
+    <div class="mb-3 ">
+    <input type="date" class="date" [(ngModel)]="user.date" name="date" id="date" #date="ngModel"
+     placeholder="search"  [ngClass]="{ 'is-invalid': userForm.submitted && date.invalid }" required pattern="^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$">
+     <div *ngIf="userForm.submitted && date.invalid" class="Validationcolor">
+      <div *ngIf="date.errors?.['required']">Date of Birth is required*</div>
+      <div *ngIf="date.errors?.['pattern']">Date of Birth must be a valid date in the format YYYY-MM-DD</div>
+      </div>
+    </div>
+  </div>
+   </div>
+  </div>
+
+   <div class="mx-5">
+     <hr class="mt-4 border  ">
+    </div>
+
+
+  <div class="md:xl:ml-5 xl:mr-[4.5rem] ">
+     <h1 class="mt-4 font-semibold text-dark_brown">Item</h1>
+
+      <details class="bg-white border-2 cursor-pointer mb-3 my-10 rounded-lg">
+      <summary class="  w-full bg-white flex justify-between py-4 px-2 acc rounded font-medium text-dark_brown">
+        <h1 class="ml-4">suicidal or Self Injury Behaviour</h1>
+      </summary>
+
+   <div class="bg-[#EEF6F680] p-2">
+    <div class="mx-4">
+    <div class=" xl:w-72">
+      <div class="mb-3 ">
+        <label for="" class="text-[#85898C] text-sm font-semibold">Answer</label>
+      <select class="input-text"  [(ngModel)]="user.text" name="text" id="text" #text="ngModel" required>
+      <option selected class="text-[#85898C]">Search Answer </option>
+      <option class="py-1 text-gray-500">Casual</option>
+      <option class="py-1 text-gray-500">Calm</option>
+      <option class="py-1 text-gray-500">Normal</option>
+      </select>
+      <div *ngIf="userForm.submitted && text.invalid" class="Validationcolor">
+        <div *ngIf="text.errors?.['required']">Team is required*</div>
+       </div>
+      </div>
+      </div>
+
+      <div>
+      <h1></h1>
+      <div class="mt-5">
+      <label for="" class="text-[#85898C] text-sm font-semibold">Description</label>
+      <div>
+      <textarea class="text-area1 " [(ngModel)]="user.textarea1" name="textarea1" id="textarea1" #id="ngModel" placeholder="write here...." rows="4" required></textarea>
+      <div *ngIf="userForm.submitted && text.invalid" class="Validationcolor">
+        <div *ngIf="text.errors?.['required']">Textfield is required*</div>
+       </div>
+      </div>
+
+      </div>
+      </div>
+  </div>
+
+
+</div>
+
+</details>
+
+<details class="bg-white border-2 cursor-pointer mb-3 my-10 rounded-lg">
+<summary
+class=" w-full bg-white flex justify-between py-4 px-2 acc rounded font-medium text-dark_brown">
+<h1 class="ml-4">Suicidal Ideation</h1>
+</summary>
+
+<div class="bg-[#EEF6F680] p-2">
+  <div class="mx-4">
+    <div class=" xl:w-72">
+      <div class="mb-3 ">
+        <label for="" class="text-[#85898C] text-sm font-semibold">Answer</label>
+      <select class="input-text" [(ngModel)]="user.xyz" name="xyz" id="xyz" #xyz="ngModel" required  >
+      <option selected>Select</option>
+      <option class="py-1 text-gray-500">x</option>
+      <option class="py-1 text-gray-500">y</option>
+      <option class="py-1 text-gray-500">z</option>
+      </select>
+      <div *ngIf="userForm.submitted && xyz.invalid" class="Validationcolor">
+        <div *ngIf="xyz.errors?.['required']">Team is required*</div>
+       </div>
+      </div>
+      </div>
+
+      <div>
+
+      <div class="mt-5 ">
+      <label for="" class="text-gray-500 text-sm font-semibold">Progress Notes</label>
+      <div>
+      <textarea class="text-area1 " [(ngModel)]="user.textarea2" name="textarea2" id="textarea2" #textarea2="ngModel" placeholder="write here...." rows="4" required></textarea>
+      <div *ngIf="userForm.submitted && textarea2.invalid" class="Validationcolor">
+        <div *ngIf="textarea2.errors?.['required']">Textfield is required*</div>
+       </div>
+      </div>
+
+      </div>
+      </div>
+  </div>
+
+
+  </div>
+
+   </details>
+
+   <details class="bg-white border-2 cursor-pointer mb-3 my-10 rounded-lg">
+   <summary
+    class=" w-full bg-white flex justify-between py-4 px-2 acc rounded font-medium text-dark_brown">
+    <h1 class="ml-4">Activating Event</h1>
+    </summary>
+
+   <div class="bg-[#EEF6F680] p-2">
+      <div class="mx-4">
+      <div class=" xl:w-72">
+      <div class="mb-3 ">
+        <label for="" class="text-[#85898C] text-sm font-semibold">Answer</label>
+      <select class="input-text " [(ngModel)]="user.city" name="city" id="city" #city="ngModel" required>
+      <option selected>Select</option>
+      <option class="py-1 text-gray-500">lucknow</option>
+      <option class="py-1 text-gray-500">Amethi</option>
+      <option class="py-1 text-gray-500">Sultanpur</option>
+      </select>
+      <div *ngIf="userForm.submitted && city.invalid" class="Validationcolor">
+        <div *ngIf="city.errors?.['required']">Team in required*</div>
+       </div>
+      </div>
+      </div>
+
+      <div>
+      <h1></h1>
+      <div class="mt-5">
+      <label for="" class="text-gray-500 text-sm font-semibold">Progress Notes</label>
+      <div>
+      <textarea class="text-area1 " [(ngModel)]="user.textarea3" name="textarea3" id="textarea3" #textarea3="ngModel"
+      placeholder="write here...." rows="4" required></textarea>
+      <div *ngIf="userForm.submitted && textarea3.invalid" class="Validationcolor">
+        <div *ngIf="textarea3.errors?.['required']">Textfield is required*</div>
+       </div>
+      </div>
+
+      </div>
+      </div>
+    </div>
+
+
+</div>
+
+</details>
+
+<details class="bg-white border-2 cursor-pointer mb-3 my-10 rounded-lg">
+<summary
+class=" w-full bg-white flex justify-between py-4 px-2 acc rounded font-medium text-dark_brown">
+<h1 class="ml-4">Psychiatric History</h1>
+</summary>
+
+<div class="bg-[#EEF6F680] p-2">
+  <div class="mx-4">
+    <div class=" xl:w-72">
+      <div class="mb-3 ">
+        <label for="" class="text-[#85898C] text-sm font-semibold">Answer</label>
+      <select class="input-text" [(ngModel)]="user.inputtext1"  name="input-text1" id="input-text1" #inputtext1="ngModel" required >
+      <option selected>Select</option>
+      <option class="py-1 text-gray-500">A1</option>
+      <option class="py-1 text-gray-500">A1</option>
+      <option class="py-1 text-gray-500">A2</option>
+      </select>
+      <div *ngIf="userForm.submitted && inputtext1.invalid" class="Validationcolor">
+        <div *ngIf="inputtext1.errors?.['required']">Team in required*</div>
+       </div>
+      </div>
+      </div>
+
+      <div>
+      <h1></h1>
+      <div class="mt-5 ">
+      <label for="" class="text-gray-500 text-sm font-semibold">Progress Notes</label>
+      <div>
+      <textarea class="text-area1 " [(ngModel)]="user.textarea4" name="textarea4" id="textarea4" #textarea4="ngModel"
+       placeholder="write here...." rows="4" required></textarea>
+      <div *ngIf="userForm.submitted && textarea4.invalid" class="Validationcolor">
+        <div *ngIf="textarea4.errors?.['required']">Textfield is required*</div>
+       </div>
+      </div>
+
+      </div>
+      </div>
+  </div>
+
+
+</div>
+
+</details>
+
+<details class="bg-white border-2 cursor-pointer mb-3 my-10 rounded-lg">
+<summary class=" w-full bg-white flex justify-between py-4 px-2 acc rounded font-medium text-dark_brown">
+<h1 class="md:ml-4">Other Risk Factors</h1>
+</summary>
+
+<div class="bg-[#EEF6F680] p-2">
+
+  <div class="mx-4">
+    <div class=" xl:w-72">
+      <div class="mb-3 ">
+        <label for="" class="text-[#85898C] text-sm font-semibold">Answer</label>
+      <select class="input-text " [(ngModel)]="user.inputtext2"  name="input-text2" id="input-text2" #inputtext2="ngModel" required>
+      <option selected>Select</option>
+      <option class="py-1 text-gray-500">Casual</option>
+      <option class="py-1 text-gray-500">Calm</option>
+      <option class="py-1 text-gray-500">Normal</option>
+      </select>
+      <div *ngIf="userForm.submitted && inputtext2.invalid" class="Validationcolor">
+        <div *ngIf="inputtext2.errors?.['required']">Team in required*</div>
+       </div>
+      </div>
+      </div>
+
+      <div>
+      <h1></h1>
+      <div class="mt-5 ">
+      <label for="" class="text-gray-500 text-sm font-semibold">Progress Notes</label>
+      <div>
+      <textarea class="text-area1 " [(ngModel)]="user.textarea5" name="textarea5" id="textarea5" #textarea5="ngModel"
+       placeholder="write here...." rows="4" required></textarea>
+      <div *ngIf="userForm.submitted && textarea5.invalid" class="Validationcolor">
+        <div *ngIf="textarea5.errors?.['required']">Textfield is required*</div>
+       </div>
+      </div>
+
+      </div>
+      </div>
+  </div>
+
+
+</div>
+
+</details>
+
+<details class="bg-white border-2 cursor-pointer mb-3 my-10 rounded-lg">
+<summary
+class="w-full bg-white flex justify-between py-4 px-2 acc rounded font-medium text-dark_brown">
+<h1 class="ml-4">Clinical Status</h1>
+</summary>
+
+<div class="bg-[#EEF6F680] p-2">
+  <div class="mx-4">
+    <div class=" xl:w-72">
+      <div class="mb-3 ">
+        <label for="" class="text-[#85898C] text-sm font-semibold">Answer</label>
+      <select class="input-text " [(ngModel)]="user.inputtext3"  name="input-text3" id="input-text3" #inputtext3="ngModel" required>
+      <option selected>Select</option>
+      <option class="py-1 text-gray-500">Casual</option>
+      <option class="py-1 text-gray-500">Calm</option>
+      <option class="py-1 text-gray-500">Normal</option>
+      </select>
+      <div *ngIf="userForm.submitted && inputtext3.invalid" class="Validationcolor">
+        <div *ngIf="inputtext3.errors?.['required']">Team in required*</div>
+       </div>
+      </div>
+      </div>
+      <div>
+      <div class="mt-5 ">
+      <label for="" class="text-gray-500 text-sm font-semibold">Progress Notes</label>
+      <div>
+      <textarea class="text-area1 " [(ngModel)]="user.textarea6" name="textarea6" id="textarea6" #textarea6="ngModel"
+       placeholder="write here...." rows="4" required=""></textarea>
+      <div *ngIf="userForm.submitted && textarea6.invalid" class="Validationcolor">
+        <div *ngIf="textarea6.errors?.['required']">Textfield is required*</div>
+       </div>
+      </div>
+
+      </div>
+      </div>
+  </div>
+
+
+</div>
+
+</details>
+
+<details class="bg-white border-2 cursor-pointer mb-3 my-10 rounded-lg">
+<summary
+class="w-full bg-white flex justify-between py-4 px-2 acc rounded font-medium text-dark_brown">
+<h1 class="ml-4">Recent Protective Factors</h1>
+</summary>
+
+<div class="bg-[#EEF6F680] p-2">
+  <div class="mx-4">
+    <div class=" xl:w-72">
+      <div class="mb-3 ">
+        <label for="" class="text-[#85898C] text-sm font-semibold">Answer</label>
+      <select class="input-text" [(ngModel)]="user.inputtext4"  name="input-text4" id="input-text4" #inputtext4="ngModel" required="">
+      <option selected>Select</option>
+      <option class="py-1 text-gray-500">Casual</option>
+      <option class="py-1 text-gray-500">Calm</option>
+      <option class="py-1 text-gray-500">Normal</option>
+      </select>
+      <div *ngIf="userForm.submitted && inputtext4.invalid" class="Validationcolor">
+        <div *ngIf="inputtext4.errors?.['required']">Team in required*</div>
+       </div>
+      </div>
+      </div>
+
+      <div>
+      <h1></h1>
+      <div class="mt-5 ">
+      <label for="" class="text-gray-500 text-sm font-semibold">Progress Notes</label>
+      <div>
+      <textarea class="text-area1 " [(ngModel)]="user.textarea7" name="textarea7" id="textarea7" #textarea7="ngModel"
+      placeholder="write here...." rows="4" required=""></textarea>
+      <div *ngIf="userForm.submitted && textarea7.invalid" class="Validationcolor">
+        <div *ngIf="textarea7.errors?.['required']">Textfield is required*</div>
+       </div>
+      </div>
+
+      </div>
+      </div>
+  </div>
+
+
+</div>
+
+</details>
+
+<details class="bg-white border-2 cursor-pointer mb-3 my-10 rounded-lg">
+<summary
+class=" w-full bg-white flex justify-between py-4 px-2 acc rounded font-medium text-dark_brown">
+<h1 class="ml-4">Other Protective Factors</h1>
+</summary>
+
+<div class="bg-[#EEF6F680] p-2">
+  <div class="mx-4">
+    <div class=" xl:w-72">
+      <div class="mb-3 ">
+        <label for="" class="text-[#85898C] text-sm font-semibold">Answer</label>
+      <select class="input-text " [(ngModel)]="user.inputtext5"  name="input-text5" id="input-text5" #inputtext5="ngModel" required="">
+      <option selected>Select</option>
+      <option class="py-1 text-gray-500">Casual</option>
+      <option class="py-1 text-gray-500">Calm</option>
+      <option class="py-1 text-gray-500">Normal</option>
+      </select>
+      <div *ngIf="userForm.submitted && inputtext5.invalid" class="Validationcolor">
+        <div *ngIf="inputtext5.errors?.['required']">Team in required*</div>
+       </div>
+      </div>
+      </div>
+
+      <div>
+      <h1></h1>
+      <div class="mt-5 ">
+      <label for="" class="text-gray-500 text-sm font-semibold">Progress Notes</label>
+      <div>
+      <textarea class="text-area1 " [(ngModel)]="user.textarea8" name="textarea8" id="textarea8" #textarea8="ngModel"
+      placeholder="write here...." rows="4" required=""></textarea>
+      <div *ngIf="userForm.submitted && textarea8.invalid" class="Validationcolor">
+        <div *ngIf="textarea8.errors?.['required']">Textfield is required*</div>
+       </div>
+      </div>
+
+      </div>
+      </div>
+  </div>
+
+
+</div>
+
+</details>
+
+<details class="bg-white border-2 cursor-pointer mb-3 my-10 rounded-lg">
+<summary
+class=" w-full bg-white flex justify-between py-4 px-2 acc rounded font-medium text-dark_brown">
+<h1 class="ml-4">Describe any suicidal, self injury or aggressive behaviour(include dates)</h1>
+</summary>
+
+<div class="bg-[#EEF6F680] p-2">
+  <div class="mx-4">
+    <div class=" xl:w-72">
+      <div class="mb-3 ">
+        <label for="" class="text-[#85898C] text-sm font-semibold">Answer</label>
+      <select class="input-text " [(ngModel)]="user.inputtext6"  name="input-text6" id="input-text6" #inputtext6="ngModel" required>
+      <option selected>Select</option>
+      <option class="py-1 text-gray-500">Casual</option>
+      <option class="py-1 text-gray-500">Calm</option>
+      <option class="py-1 text-gray-500">Normal</option>
+      </select>
+      <div *ngIf="userForm.submitted && inputtext6.invalid" class="Validationcolor">
+        <div *ngIf="inputtext6.errors?.['required']">Team in required*</div>
+       </div>
+      </div>
+      </div>
+
+      <div>
+
+      <div class="mt-5 ">
+      <label for="" class="text-gray-500 text-sm font-semibold">Progress Notes</label>
+      <div>
+      <textarea class="text-area1 " [(ngModel)]="user.textarea9" name="textarea9" id="textarea9" #textarea9="ngModel"
+       placeholder="write here...." rows="4" required></textarea>
+      <div *ngIf="userForm.submitted && textarea9.invalid" class="Validationcolor">
+        <div *ngIf="textarea9.errors?.['required']">Textfield is required*</div>
+       </div>
+      </div>
+
+      </div>
+      </div>
+  </div>
+
+
+</div>
+
+</details>
+</div>
+
+
+<hr class="mt-8 border mx-5">
+
+<div class="md:xl:ml-5 xl:mr-[4.5rem]">
+<div class="mt-5 ">
+
+<h1 class="text-[#292929] text-xl font-semibold ">OverAll Assessment:</h1>
+<p class="text-[#85898C] font-medium text-sm mt-6">Description</p>
+</div>
+<div>
+<textarea class="text-area1 "  [(ngModel)]="user.Description" name="Description" id="Description" #Description="ngModel"
+ placeholder="write here...." rows="4" required></textarea>
+ <div *ngIf="userForm.submitted && Description.invalid" class="Validationcolor">
+        <div *ngIf="Description.errors?.['required']">Textfield is required*</div>
+       </div>
+</div>
+<div class="mt-8 ">
+<button class=" button ">Save</button>
+<button class="button1 ">Cancel</button>
+</div>
+</div>
+
+
+</form>
+</div>
+
+
+

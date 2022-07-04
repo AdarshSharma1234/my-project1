@@ -1,0 +1,31 @@
+.userimg{
+    @apply  rounded-full w-24 h-24 mx-auto mt-14;
+}
+.empty{
+    @apply w-4 h-4 bg-primary_color mx-auto rounded-full ;
+   
+    transform: translateY(-50%);
+}
+
+.list{
+    @apply px-6 py-2 my-4 cursor-pointer text-light_gray hover:text-light_white1 ;
+a{
+    @apply ml-3
+}
+}
+
+.list:hover{
+    @apply  border-l-4 border-light_white1 ;
+    
+}
+
+li:hover{
+   .list a{
+        @apply ml-2;
+    }
+}
+.active
+{
+    @apply  border-l-2 border-light_white1 text-white;
+}
+

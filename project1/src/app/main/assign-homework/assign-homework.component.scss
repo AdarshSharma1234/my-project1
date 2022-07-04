@@ -1,0 +1,12 @@
+.home-work-tabs{
+    @apply text-[#8A8A8A] font-semibold py-4 px-2 text-center cursor-pointer rounded-xl
+    hover:bg-[#4E989F] hover:text-white hover:rounded-xl
+}
+.activeTabs
+{
+    @apply bg-[#4E989F] text-white
+}
+
+input[type="radio"]:checked + span {
+    display: block;
+  }

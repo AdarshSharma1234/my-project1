@@ -1,0 +1,536 @@
+<div class="w-full lg:flex my-1 mb-6">
+  <div class="w-1/2">
+    <app-searchbox></app-searchbox>
+  </div>
+
+  <div class="md:inline-block sm:inline-block lg:mr-4 lg:ml-auto sm:ml-4">
+    <div class="flex -space-x-2 overflow-hidden">
+      <div class="flex mt-2">
+        <h1 class="bg-green-400 w-2 h-2 mt-2 mr-1 rounded-full"></h1>
+        <span class="mr-3"> online </span>
+      </div>
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+        alt=""
+      />
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+    </div>
+  </div>
+</div>
+
+<div class="bg-white mt-4 rounded pt-8">
+
+
+  <div class="flex space-x-2 mx-8">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-4 w-4 mt-1.5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M10 19l-7-7m0 0l7-7m-7 7h18"
+      />
+    </svg>
+    <h1 class="text-[#292929] font-semibold text-[18px] mb-6">MSE Form</h1>
+  </div>
+  <!-- <h1 class="text-center ">MSE Form</h1> -->
+  <div>
+    <form #mseForm="ngForm">
+      <div class="xl:grid xl:grid-cols-3 xl:gap-10 mx-12">
+        <div class="">
+          <div class="">
+            <label for="" class="text-[14px] font-semibold mt-5 text-[#85898C]">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="input"
+              placeholder="Charrvi Didwania"
+              required
+              minlength="2"
+              maxlength="25"
+              pattern="[A-Za-z]{1,20}"
+            />
+          </div>
+          <!-- <div  *ngIf="!name?.valid && (name?.dirty || name?.touched)"  class="mseVailidation">
+              <div *ngIf="name.errors?.['required']">
+                first Name is required*
+              </div>
+              <div *ngIf="name.errors?.['pattern']">
+                  enter alphabet number is{{name.errors?.['pattern'].requiredLength}}
+              </div>
+             <div *ngIf="name.errors?.['minlength']">
+              First Name  Minimum Length is {{name.errors?.['minlength'].requiredLength}}
+             </div>
+            <div *ngIf="name.errors?.['maxlength']">
+              First Name Maximum Length is {{name.errors?.['maxlength'].requiredLength}}
+            </div>
+          </div> -->
+        </div>
+        <div>
+          <div class="">
+            <label for="" class="text-[14px] font-semibold mt-5 text-[#85898C]">Team</label>
+            <!-- <input
+              type="text"
+              id="team"
+              name="team"
+              class="input"
+              placeholder="SSi "
+              required
+              minlength="3"
+              maxlength="14"
+              pattern="[A-Za-z]{1,20}"
+            /> -->
+            <select class="input" name="team" id="team" required>
+
+              <option selected>select teams</option>
+
+              <option class="py-1">B1</option>
+
+              <option class="py-1">B2</option>
+
+              <option class="py-1">B3</option>
+
+              </select>
+          </div>
+          <!-- <div  *ngIf="!team?.valid && (team?.dirty || team?.touched)"  class="mseVailidation">
+            <div *ngIf="team.errors?.['required']">
+              Team Name is required*
+            </div>
+            <div *ngIf="team.errors?.['pattern']">
+                enter alphabet number is{{team.errors?.['pattern'].requiredLength}}
+            </div>
+           <div *ngIf="team.errors?.['minlength']">
+            Team Name  Minimum Length is {{team.errors?.['minlength'].requiredLength}}
+           </div>
+          <div *ngIf="team.errors?.['maxlength']">
+            Team Name Maximum Length is {{team.errors?.['maxlength'].requiredLength}}
+          </div>
+        </div> -->
+        </div>
+        <div>
+          <div class="">
+            <label for="" class="text-[14px] font-semibold mt-5 text-[#85898C]">Date</label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              class="input"
+              placeholder="date"
+              required
+            />
+          </div>
+          <!-- <div  *ngIf="!date?.valid && (date?.dirty || date?.touched)"  class="mseVailidation">
+            <div *ngIf="date.errors?.['required']">
+              date is required*
+          </div>
+          </div> -->
+        </div>
+       </div>
+       <div class="bg-gray-200 mx-10 mt-16 py-4">
+        <div class="grid grid-cols-3 mx-5">
+          <h1 class="font-semibold text-xl xl:ml-32 ">Area</h1>
+          <h1 class="font-semibold text-xl xl:ml-32">Type</h1>
+          <h1 class="font-semibold text-xl xl:ml-32">Description</h1>
+        </div>
+       </div>
+       <div>
+        <div class="grid xl:grid-cols-3   mt-6 mx-10">
+          <div class="xl:ml-32 mt-5 font-bold">Appearance</div>
+          <div class="xl:ml-16 xl:w-96">
+            <div class="mb-3">
+              <select
+                class="input-text mb-5"
+                name="appearence"
+                id="appearence"
+                required
+              >
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+              <!-- <div  *ngIf="!appearence?.valid && (appearence?.dirty || appearence?.touched)"  class="mseVailidation">
+                  <div *ngIf="appearence.errors?.['required']">
+                    select is required*
+                </div>
+                </div> -->
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                name="details"
+                placeholder="Description"
+                required
+                minlength="2"
+                maxlength="22"
+                pattern="[A-Za-z]{1,20}"
+              />
+            </div>
+            <!-- <div  *ngIf="!details?.valid && (details?.dirty || details?.touched)"  class="mseVailidation">
+                <div *ngIf="details.errors?.['required']">
+                   Name is required*
+                </div>
+                <div *ngIf="details.errors?.['pattern']">
+                    enter alphabet number is{{details.errors?.['pattern'].requiredLength}}
+                </div>
+               <div *ngIf="details.errors?.['minlength']">
+                details  Minimum Length is {{team.errors?.['minlength'].requiredLength}}
+               </div>
+              <div *ngIf="details.errors?.['maxlength']">
+                details Maximum Length is {{details.errors?.['maxlength'].requiredLength}}
+              </div>
+            </div> -->
+          </div>
+          <div class="xl:ml-32 mt-5 font-bold">Attitude</div>
+          <div class="xl:ml-16 xl:w-96">
+            <div class="mb-3">
+              <select
+                class="input-text mb-5"
+                name="attitude"
+                id="attitude"
+                required
+              >
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+              <!-- <div  *ngIf="!attitude?.valid && (attitude?.dirty || attitude?.touched)"  class="mseVailidation">
+                    <div *ngIf="attitude.errors?.['required']">
+                      select is required*
+                  </div>
+                  </div> -->
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="inputfield"
+                class="input-text3"
+                name="inputfield"
+                placeholder="Description "
+                required
+                minlength="2"
+                maxlength="22"
+                pattern="[A-Za-z]{1,20}"
+              />
+            </div>
+            <!-- <div  *ngIf="!inputfield?.valid && (inputfield?.dirty || inputfield?.touched)"  class="mseVailidation">
+                  <div *ngIf="inputfield.errors?.['required']">
+                     Name is required*
+                  </div>
+                  <div *ngIf="inputfield.errors?.['pattern']">
+                      enter alphabet number is{{inputfield.errors?.['pattern'].requiredLength}}
+                  </div>
+                 <div *ngIf="inputfield.errors?.['minlength']">
+                  details  Minimum Length is {{inputfield.errors?.['minlength'].requiredLength}}
+                 </div>
+                <div *ngIf="inputfield.errors?.['maxlength']">
+                  details Maximum Length is {{inputfield.errors?.['maxlength'].requiredLength}}
+                </div>
+              </div> -->
+          </div>
+          <div class="xl:ml-32 mt-5 font-bold">Behaviour</div>
+          <div class="xl:ml-16 xl:w-96">
+            <div class="mb-3">
+              <select class="input-text mb-5">
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                placeholder="Description "
+              />
+            </div>
+          </div>
+          <div class="xl:ml-32 mt-5 font-bold">Speech</div>
+          <div class="xl:ml-16 xl:w-96">
+            <div class="mb-3">
+              <select class="input-text mb-5">
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                placeholder="Description "
+              />
+            </div>
+          </div>
+          <div class="xl:ml-32 mt-5 font-bold">Mood</div>
+          <div class="xl:ml-16 xl:w-96">
+            <div class="mb-3">
+              <select class="input-text mb-5">
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                placeholder="Description "
+              />
+            </div>
+          </div>
+          <div class="xl:ml-32 mt-5 font-bold">Affect</div>
+          <div class="xl:ml-16 xl:w-96">
+            <div class="mb-3">
+              <select class="input-text mb-5">
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                placeholder="Description "
+              />
+            </div>
+          </div>
+          <div class="xl:ml-32 mt-5 font-bold">Thought Progress</div>
+          <div class="xl:ml-16 gap-5  flex">
+            <div class="mb-3">
+              <select class=" w-[11.3rem] border-2 border-gray-400 bg-white rounded-lg py-3 px-2  outline-none mt-2   mb-5">
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <select class=" w-[11.3rem] border-2 border-gray-400 bg-white rounded-lg py-3 px-2 outline-none mt-2
+               mb-5">
+                <option selected>Select Status</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                placeholder="Description "
+              />
+            </div>
+          </div>
+
+          <!-- <div class="xl:ml-32 mt-5 font-bold">Select Status</div>
+          <div class="xl:ml-16 xl:w-96">
+            <div class="mb-3">
+              <select class="input-text mb-5">
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                placeholder="Description "
+              />
+            </div>
+          </div> -->
+          <div class="xl:ml-32 mt-5 font-bold ">Thought Content</div>
+          <div class="xl:ml-16 xl:w-96 ">
+            <div class="mb-3">
+              <select class="input-text mb-5">
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="flex ">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                placeholder="Description "
+              />
+            </div>
+          </div>
+          <div class="xl:ml-32 mt-5 font-bold">Perception</div>
+          <div class="xl:ml-16 xl:w-96">
+            <div class="mb-3">
+              <select class="input-text mb-5">
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                placeholder="Description "
+              />
+            </div>
+          </div>
+          <div class="xl:ml-32 mt-5 font-bold">Orientation</div>
+          <div class="xl:ml-16 xl:w-96">
+            <div class="mb-3">
+              <select class="input-text mb-5">
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                placeholder="Description "
+              />
+            </div>
+          </div>
+          <div class="xl:ml-32 mt-5 font-bold">Memory</div>
+          <div class="xl:ml-16 xl:w-96">
+            <div class="mb-3">
+              <select class="input-text mb-5">
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                placeholder="Description "
+              />
+            </div>
+          </div>
+          <div class="xl:ml-32 mt-5 font-bold">Judgement</div>
+          <div class="xl:ml-16 xl:w-96">
+            <div class="mb-3">
+              <select class="input-text mb-5">
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                placeholder="Description "
+              />
+            </div>
+          </div>
+          <div class="xl:ml-32 mt-5 font-bold">Insight</div>
+          <div class="xl:ml-16 xl:w-96">
+            <div class="mb-3">
+              <select class="input-text mb-4">
+                <option selected>Select</option>
+                <option class="py-1 text-gray-500">Casual</option>
+                <option class="py-1 text-gray-500">Calm</option>
+                <option class="py-1 text-gray-500">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="flex">
+              <input
+                type="text"
+                id="name"
+                class="input-text3"
+                placeholder="Description "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+</form>
+</div>
+<div class=" mt-10 mx-10  pb-12">
+  <button class="button" routerLink="/progress-notes">Save</button>
+  <button class="button1" >Cancel</button>
+
+</div>
+
+</div>

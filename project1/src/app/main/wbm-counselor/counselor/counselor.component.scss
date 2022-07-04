@@ -1,0 +1,8 @@
+input[type=checkbox]:checked + label {
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 400;
+  } 
+  
+  .viewButton {
+      @apply text-white w-full rounded py-1.5 bg-primary_color font-semibold text-[12px] leading-[15px];
+  }

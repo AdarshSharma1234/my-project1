@@ -1,0 +1,508 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  // h1 {
+  //   @apply text-2xl;
+  // }
+  // h2 {
+  //   @apply text-xl;
+  // }
+  // p{
+  //   @apply text-5xl
+  // }
+}
+
+* {
+  font-family: "Concert One", cursive;
+  font-family: "Montserrat", sans-serif;
+  // overflow-x: hidden;
+}
+
+.alert1 {
+  @apply bg-[#DBFFEA] text-[#1F9254] rounded-full px-2 py-1;
+}
+
+// Dyanmic Table Classes
+
+.tableHead {
+  @apply text-sm font-bold py-4 text-[#292929];
+}
+
+.greenAlert {
+  @apply rounded-full text-[12px] px-4 py-2 leading-[15px] font-medium bg-[#DBFFEA] text-[#1F9254];
+}
+
+.viewButton {
+  @apply text-white px-8 rounded-md py-1.5 bg-[#4E989F] font-semibold text-[12px] leading-[15px];
+}
+
+.tableData {
+  @apply text-sm text-gray-900 font-light py-4 whitespace-nowrap;
+}
+
+.iconButton {
+  @apply ml-5;
+}
+
+// Global Table Shade
+
+tbody tr:nth-child(odd) {
+  @apply bg-gray-50;
+}
+tbody tr:nth-child(even) {
+  @apply bg-[#EEF6F6];
+}
+
+// ?/chat box
+
+.chat-text-header {
+  @apply text-[#292929] text-[16px] leading-[20px] font-semibold;
+}
+.div-svg-search {
+  @apply flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none;
+}
+.simple-search-input {
+  @apply bg-gray-50 border border-gray-300 outline-none text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+}
+.chatbox-text {
+  @apply text-[#373435] font-semibold text-[14px] leading-[17px];
+}
+.chatbox-list {
+  @apply  py-4 ;
+}
+.time {
+  @apply text-[12px] leading-[17px] text-[#AEAEAE];
+}
+.msg-content {
+  @apply text-sm mt-1 leading-[17px] text-slate-400;
+}
+.green-dot {
+  @apply rounded-full h-3 absolute w-3 bg-[#6ABE6E];
+}
+.user-chat {
+  @apply text-[#373435] font-semibold text-[16px] leading-[20px];
+}
+.arrow-button {
+  @apply bg-[#EEF6F6] py-3 px-4 w-14 rounded-tl-full rounded-bl-full;
+}
+
+.arrow-button-extended {
+  @apply bg-[#EEF6F6] py-3 w-[7rem] px-4 rounded-tl-full rounded-bl-full;
+}
+
+.msg-content-div {
+  @apply relative w-full p-6 overflow-y-auto h-[42rem] border-b-2;
+}
+
+.msg-content-user {
+  @apply mb-2 text-[#AEAEAE] text-[12px] leading-[15px];
+}
+
+.msg-content-txt-left {
+  @apply text-[#373435] mr-20 text-[14px] leading-[17px] bg-[#FFF2E5] p-3  rounded;
+}
+
+.msg-content-txt-left2 {
+  @apply text-[#373435] text-[14px] leading-[17px] bg-[#FFF2E5] p-3 rounded mt-1;
+}
+
+.msg-content-text-right {
+  @apply float-right bg-[#EDF5F6] mt-2 rounded pt-4 pl-5 pr-3 pb-2 text-[14px] leading-[17px] w-72;
+}
+
+.media-button {
+  @apply text-[#373435] font-semibold text-[16px] leading-[20px];
+}
+
+.media-btn-content {
+  @apply ml-2 text-[#373435] text-[16px] leading-[20px] font-semibold;
+}
+
+.files-text {
+  @apply text-[#292929] font-semibold text-[16px] leading-[20px];
+}
+
+.two-files-text {
+  @apply text-[#AEAEAE] text-[12px] leading-[15px] ml-2 mt-0.5;
+}
+.file-manager-text {
+  @apply text-[#292929] font-medium text-[14px] leading-[17px] mt-2 ml-2;
+}
+.media-pic-text {
+  @apply text-[#AEAEAE] text-[12px] leading-[15px] ml-2 mt-0.5;
+}
+
+
+.msg-border-bottom {
+  border-bottom-width: 20px !important;
+
+}
+// herder image collection
+.header-image-collection {
+  @apply inline-block h-10 w-10 rounded-full ring-2 ring-white;
+}
+
+// Global input field class
+.input-text {
+  @apply w-full border-2 border-gray-400 bg-white rounded-lg px-3 py-3 outline-none mt-2;
+}
+.input-text1 {
+  @apply w-full border-2 border-gray-400 bg-white rounded-lg px-2.5 py-3 outline-none mt-2;
+}
+
+.radio-input {
+  @apply h-4 w-4 text-gray-700 px-3 py-3 border rounded mr-2 ;
+}
+.text-area {
+  @apply w-full px-3 py-2 text-gray-700 border-2 border-gray-400 rounded-lg focus:outline-none mt-2 xl:mr-28;
+}
+.text-area1 {
+  @apply w-full px-3 py-2 text-gray-700 border-2 border-gray-400 rounded-lg focus:outline-none mt-2;
+}
+.button {
+  @apply bg-primary_color px-16 py-3 border rounded-lg text-white font-medium;
+  }
+  .button1{
+  @apply border border-gray-500 px-12 py-3 rounded-lg text-gray-600 font-medium ml-6 ;
+  }
+  .date{
+    @apply w-full px-3 py-2.5 text-gray-700 border-2 border-gray-400 rounded-lg focus:outline-none mt-2 xl:mr-28;
+  }
+  .input{
+    @apply w-full border-2 border-gray-400 bg-white rounded-lg outline-none mt-2 xl:mr-16 ;
+  }
+  .input-text5{
+    @apply w-full border-2 border-gray-400 bg-white rounded-lg p-3 outline-none mt-2 xl:mr-28 xl:w-72 ;
+  }
+
+
+  select {
+
+    appearance:none;
+
+    background-image: url("./assets/img/accordian-down.svg") ;
+
+    background-repeat: no-repeat;
+
+    background-position: right;
+
+    background-origin: content-box, padding-box;
+
+    }
+
+    input[type="date"], input[type="date"]::-webkit-calendar-picker-indicator {
+
+      background-image: url("./assets/img/date.svg");
+      background-repeat: no-repeat;
+      background-position: right;
+      background-origin: content-box,padding-box;
+    }
+
+.button1 {
+  @apply border border-gray-500 px-12 py-3 rounded-lg text-gray-600 font-medium ml-6;
+}
+.date {
+  @apply w-full px-3 py-2.5 text-gray-700 border-2 border-gray-400 rounded-lg focus:outline-none mt-2 xl:mr-28;
+}
+
+select {
+  // appearance:none;
+  // background-image: url("./assets/img/accordian-down.svg") ;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-origin: content-box, padding-box;
+}
+
+input[type="date"],
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background-image: url("./assets/img/date.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-origin: content-box, padding-box;
+}
+
+//     input[type="date"]::-webkit-inner-spin-button,
+//      input[type="date"]::-webkit-calendar-picker-indicator {
+//     display: none;
+//     -webkit-appearance: none;
+// }
+
+.Validationcolor{
+  @apply text-red-500 italic
+}
+
+
+.head-card-box {
+  @apply bg-white grid overflow-hidden grid-cols-3 grid-rows-1 h-min py-4 px-6;
+}
+
+.head-cards {
+  @apply w-24 h-24 bg-[#EEF6F6] rounded-md flex justify-center;
+}
+
+.no-of-clients {
+  @apply text-[#292929] font-medium text-[18px];
+}
+
+.clients-count {
+  @apply text-[#292929] font-semibold text-[42px] leading-[51px];
+}
+
+.divs-for-tabs {
+  @apply grid overflow-hidden grid-cols-3 md:grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-6 mx-5 mt-5 pb-16;
+}
+
+.div-ngFor {
+  @apply px-4 py-6 shadow-xl mb-10;
+}
+
+.profile-image {
+  @apply rounded-full h-12 w-12;
+}
+
+.profile-name {
+  @apply text-[#292929] font-medium text-[16px];
+}
+
+.designation {
+  @apply text-[#6B7280] text-[10px];
+}
+
+.date-time-div {
+  @apply flex my-3 border-b pt-3 pb-6;
+}
+
+.date-icon {
+  @apply px-2 h-4 w-8 mt-0.5 pr-2;
+}
+
+.date-text {
+  @apply text-[#8A8A8A] font-medium text-[14px];
+}
+
+.time-icon {
+  @apply ml-8 h-4 w-6 pr-2 mt-0.5;
+}
+
+.assignment {
+  @apply text-[#292929] font-semibold text-[14px] pt-0.5;
+}
+
+.assignment-status {
+  @apply font-medium text-[12px] rounded-full p-1 px-2 ml-1.5;
+}
+
+.app-button-class {
+  @apply ml-auto font-semibold text-[12px];
+}
+
+.documentation-status {
+  @apply font-medium text-[12px] rounded-full p-1 px-2 ml-1.5;
+}
+
+.text-hptf {
+  @apply bg-[#EEF6F6] text-[#003034] font-medium text-[14px] rounded-full p-1 px-4 ml-1.5;
+}
+
+.button-no-show {
+  @apply ml-5 px-6 border text-primary_color text-[12px] font-semibold border-primary_color rounded;
+}
+
+
+
+
+.today-completed-tab {
+  @apply text-[#4E989F] border-b-2 border-[#4E989F] ;
+}
+
+.therapy-session
+{
+    @apply font-bold  text-gray-500 mt-4 sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-xl
+}
+
+.therapy-class
+{
+    @apply font-semibold  text-gray-600 sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-4xl
+}
+
+.progress-list
+{
+    @apply  mb-4 ml-5
+}
+
+.progress-notes-head
+{
+    @apply text-[#343A40] font-bold
+}
+
+.progress-notes-data
+{
+    @apply text-base
+}
+
+
+// Accordion
+// THE CSS
+
+details summary::-webkit-details-marker
+{
+    display: none;
+}
+
+.acc:after
+{
+    content: url("./assets/img/accordian-down.svg");
+}
+
+
+details[open] summary
+{
+    color: black
+}
+
+details[open] summary::after
+{
+    content: url("./assets/img/accordian-up.svg");
+}
+
+details[open] summary ~ *
+{
+    animation: slideDown 0.3s ease-in-out;
+}
+
+details[open] summary p
+{
+    opacity: 0;
+    animation-name: showContent;
+    animation-duration: 0.6s;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+    margin: 0;
+}
+
+@keyframes showContent
+{
+    from
+    {
+        opacity: 0;
+        height: 0;
+    }
+    to
+    {
+        opacity: 1;
+        height: auto;
+    }
+}
+@keyframes slideDown
+{
+    from
+    {
+        opacity: 0;
+        height: 0;
+        padding: 0;
+    }
+
+    to
+    {
+        opacity: 1;
+        height: auto;
+    }
+}
+
+
+// Simi-circle chart
+.pie {
+    margin: 0 auto;
+    position: relative;
+    width: 200px;
+    height: 100px;
+    border-radius: 200px 200px 0 0;
+    overflow: hidden;
+}
+.pie::after {
+    transform: rotate(-60deg);      /*  set rotation degree  */
+    // background: linear-gradient(to right, rgba(228,232,7,1) 0%, rgba(0,218,156,1) 100%);
+    background-color: #F17171;
+    transform-origin: center bottom;
+}
+.pie::before {
+    border: 20px solid grey;
+}
+.pie .overlay{
+    top: 20px;                      /*  match border width  */
+    left: 20px;                     /*  match border width  */
+    width: calc(100% - 40px);       /*  match border width times 2  */
+    height: calc(200% - 40px);      /*  match border width times 2  */
+    border-radius: 100%;
+    background: white;
+    z-index: 1;                     /*  move it on top of the pseudo elements  */
+}
+.pie *,
+.pie::before,
+.pie::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    box-sizing: border-box;
+}
+
+
+
+// Global input field class
+.input-text {
+  @apply w-full border-2 border-gray-400 bg-white rounded-lg px-3 py-3 outline-none mt-2;
+}
+.input-text1 {
+  @apply w-full border-2 border-gray-400 bg-white rounded-lg px-2.5 py-3 outline-none mt-2 ml-5;
+}
+.input-text3 {
+  @apply w-full border-2 border-gray-400 bg-white rounded-lg px-3 py-3 outline-none mt-2 xl:mr-28 xl:w-96;
+}
+.radio-input {
+  @apply h-4 w-4 text-gray-700 px-3 py-3 border rounded mr-2 ml-4;
+}
+.text-area {
+  @apply w-full px-3 py-2 text-gray-700 border-2 border-gray-400 rounded-lg focus:outline-none mt-2 xl:mr-28;
+}
+.text-area1 {
+  @apply w-full px-3 py-2 text-gray-700 border-2 border-gray-400 rounded-lg focus:outline-none mt-2;
+}
+.button {
+  @apply bg-primary_color px-16 py-3 border rounded-lg text-white font-medium;
+}
+.button1 {
+  @apply border border-gray-500 px-12 py-3 rounded-lg text-gray-600 font-medium ml-6;
+}
+.button2 {
+  @apply bg-primary_color px-36 py-3 border rounded-lg text-white font-medium;
+}
+.date {
+  @apply w-full px-3 py-2.5 text-gray-700 border-2 border-gray-400 rounded-lg focus:outline-none mt-2 xl:mr-28;
+}
+.input {
+  @apply w-full border-2 border-gray-400 bg-white rounded-lg outline-none mt-2 xl:mr-16;
+}
+.input-text5 {
+  @apply w-full border-2 border-gray-400 bg-white rounded-lg p-3 outline-none mt-2 xl:mr-28 xl:w-72;
+}
+select {
+  appearance: none;
+  background-image: url("./assets/img/accordian-down.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-origin: content-box, padding-box;
+}
+input[type="date"],
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background-image: url("./assets/img/date.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-origin: content-box, padding-box;
+}

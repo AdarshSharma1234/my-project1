@@ -1,0 +1,268 @@
+<div class="mx-4 ">
+
+  <div class="lg:flex mb-4 ">
+    <div class="w-1/2 ">
+      <img src="assets/img/search.svg" alt="" class="inline absolute mt-2 ml-2 w-6">
+      <input type="search" placeholder="Search" class="outline-none border border-gray-300 py-2 pl-10 sm:w-full md:w-full lg:w-1/2 pr-3 rounded-lg ">
+    </div>
+
+
+    <div class="md:inline-block sm:inline-block lg:mr-4 ml-auto">
+        <div class="flex -space-x-2 overflow-hidden">
+          <div class="flex mt-3 ">
+            <h1 class="bg-green-400 w-3 h-3 mt-2 mr-1 rounded-full"></h1>
+            <span class=" mr-3"> online </span>
+          </div>
+
+            <img
+              class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+              src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              alt=""
+            />
+            <img
+              class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+              src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              alt=""
+            />
+            <img
+              class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+              alt=""
+            />
+            <img
+              class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              alt=""
+            />
+            <img
+              class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+              src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              alt=""
+            />
+          </div>
+    </div>
+  </div>
+  <div class="">
+    <h1 class="text-sm font-semibold mt-5 ">My Clients <span class="text-gray-500 font-normal"> / Jonh doe</span></h1>
+    <h1 class="text-2xl font-semibold mt-4">Progress Notes</h1>
+  </div>
+
+     <div class="bg-white shadow-sm p-2 mt-4 ">
+
+     <form (ngSubmit)="userForm.form.valid && onsubmit(userForm)"  #userForm="ngForm">
+
+      <div class="xl:ml-5 xl:mr-20">
+        <h1 class="font-semibold mt-4">Details</h1>
+
+        <div class="md:grid md:grid-cols-3 gap-10">
+          <div class="mt-5">
+           <label for="" class="text-gray-500 text-sm font-semibold ">Name</label>
+            <div class="mb-3">
+              <input type="text" #name="ngModel" id="name" class=" input-text " [(ngModel)]="datauser.name"   name="name" placeholder="search and select"
+              required
+              pattern="[A-Za-z]{1,20}"
+              minlength="6"
+              maxlength="20" [ngClass]="{ 'is-invalid': userForm.submitted && name.invalid }">
+           </div>
+           <div *ngIf="userForm.submitted && name.invalid" class="Validationcolor">
+            <div *ngIf="name.errors?.['required']">name is required*</div>
+            <div *ngIf="name.errors?.['pattern']">
+              Enter character only{{name.errors?.['pattern'].requiredLength}}
+          </div>
+          <div *ngIf="name.errors?.['minlength']">
+          Minimum length is {{name.errors?.['minlength'].requiredLength}}
+          </div>
+          <div *ngIf="name.errors?.['maxlength']">
+           Maximum length is {{name.errors?.['maxlength'].requiredLength}}
+          </div>
+        </div>
+      </div>
+
+
+
+
+          <div class="mt-5">
+            <label for="" class="text-gray-500 text-sm font-semibold">Team</label>
+
+             <div class="mb-3  ">
+               <select class=" w-full border-2 border-gray-400  mt-2 rounded-lg bg-white py-3 px-3" #xyz="ngModel"
+               [(ngModel)]="datauser.xyz" name="xyz" required [ngClass]="{ 'is-invalid': userForm.submitted && xyz.invalid }">
+                  <option selected>select teams</option>
+                 <option class="py-1" value="X" >X</option>
+                 <option class="py-1" value="Y">Y</option>
+                 <option class="py-1" value="Z">Z</option>
+               </select>
+              </div>
+              <div *ngIf="userForm.submitted && xyz.invalid" class="Validationcolor">
+                <div *ngIf="xyz.errors?.['required']">Required (Please select xyz)*</div>
+              </div>
+
+
+            </div>
+
+       <div class="mt-5">
+           <label for="" class="text-gray-500 text-sm font-semibold">Date</label>
+            <div class="mb-3 ">
+           <input type="date" [(ngModel)]="datauser.date" name="date" #date="ngModel" id="date"
+            class=" input-text" placeholder="search" pattern="^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$"
+            [ngClass]="{ 'is-invalid': userForm.submitted && date.invalid }">
+
+         </div>
+         <div *ngIf="userForm.submitted && date.invalid" class="Validationcolor">
+          <div *ngIf="date.errors?.['required']">Date of Birth is required*</div>
+          <div *ngIf="date.errors?.['pattern']">Date of Birth must be a valid date in the format YYYY-MM-DD</div>
+          </div>
+
+       </div>
+
+       <div class="mt-5" (click)="selectDroupdown()">
+        <label for="" class="text-gray-500 text-sm font-semibold">Presenting Concern</label>
+
+         <div class="mb-3  ">
+           <select class=" w-full border-2 border-gray-400 py-3 px-3  mt-2 rounded-lg bg-white  " #team="ngModel"
+            [(ngModel)]="datauser.team" name="team" required [ngClass]="{ 'is-invalid': userForm.submitted && team.invalid }">
+              <option selected>select teams</option>
+             <option class="py-1" value="X" >X</option>
+             <option class="py-1" value="Y">Y</option>
+             <option class="py-1" value="Z">Z</option>
+           </select>
+          </div>
+
+          <div *ngIf="userForm.submitted && team.invalid" class="Validationcolor">
+            <div *ngIf="team.errors?.['required']">Required (Please select xyz)*</div>
+          </div>
+
+
+        </div>
+
+
+
+         <div class="mt-5  ">
+        <label for="" class="text-gray-500 text-sm font-semibold ">Any Referrals</label>
+        <div class="flex mt-4 ">
+          <div class="flex items-center mb-2   ">
+         <input type="radio"  id="radio1" (click)="hideData()"  name="radio"  class="radio-input " >
+          <label for="radio-example-1" class="text-gray-400">No</label>
+         </div>
+         <div class="flex items-center mb-2">
+         <input type="radio" id="radio2"   name="radio" (click)="clickData()" class=" radio-input ml-4">
+         <label for="radio-example-2" class="text-gray-400 ">Yes</label>
+         </div>
+        </div>
+        </div>
+
+        <div class="mt-5">
+        <label for="" class="text-gray-500 text-sm font-semibold ">Follow up Required</label>
+        <div class="flex mt-4">
+          <div class="flex items-center mb-2 mr-4 ">
+         <input type="radio" id="radio1" name="radiobtn" (click)="hideSelect()"  class="radio-input ">
+          <label for="radio-example-1" class="text-gray-400">No</label>
+         </div>
+         <div class="flex items-center mb-2 ">
+         <input (click)="selectData()" type="radio" id="radio2" name="radiobtn" class="radio-input label-checked:bg-red-600">
+         <label for="radio-example-2" class="text-gray-400  ">Yes</label>
+         </div>
+        </div>
+        </div>
+
+       <div class="" *ngIf="selectDroup">
+        <label for="" class="text-gray-500 text-sm font-semibold">Severity</label>
+        <div class="md:flex mt-2">
+          <div class="flex items-center mb-2 mr-4  ">
+         <input type="radio" id="radio-example-1" name="radiobtn3" class="radio-input  " >
+          <label for="radio-example-1" class="text-gray-400">High</label>
+         </div>
+         <div class="flex items-center mb-2">
+         <input type="radio" id="radio-example-2" name="radiobtn3" class=" radio-input ">
+         <label for="radio-example-2" class="text-gray-400">Medium</label>
+         </div>
+         <div class="flex items-center mb-2 ">
+          <input type="radio"  id="radio-example-2"  name="radiobtn3" class=" radio-input ">
+          <label for="radio-example-2" class="text-gray-400">Low</label>
+          </div>
+
+        </div>
+       </div>
+
+
+
+       <div class="mt-2" >
+
+         <div *ngIf="showInput" class="mb-3">
+           <input type="ReferralsDetails" #ReferralsDetails="ngModel" id="ReferralsDetails" class=" input-text "
+            [(ngModel)]="datauser.ReferralsDetails" name="ReferralsDetails" placeholder="ReferralsDetails"
+           required
+           pattern="[A-Za-z]{1,20}"
+           minlength="6"
+           maxlength="20" [ngClass]="{ 'is-invalid': userForm.submitted && ReferralsDetails.invalid }">
+        </div>
+        <div *ngIf="userForm.submitted && name.invalid" class="Validationcolor">
+          <div *ngIf="name?.errors?.['required']">name is required*</div>
+          <div *ngIf="name.errors?.['pattern']">
+            Enter character only{{name.errors?.['pattern'].requiredLength}}
+        </div>
+        <div *ngIf="name.errors?.['minlength']">
+        Minimum length is {{name.errors?.['minlength'].requiredLength}}
+        </div>
+        <div *ngIf="name.errors?.['maxlength']">
+         Maximum length is {{name.errors?.['maxlength'].requiredLength}}
+        </div>
+      </div>
+
+       </div>
+
+
+
+
+       <div class="mt-">
+
+         <div class="mb-3 " *ngIf="showData">
+        <input type="date" [(ngModel)]="datauser.date" name="date" #date="ngModel" id="date"
+          class=" input-text" placeholder="search"  pattern="^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$"
+           [ngClass]="{ 'is-invalid': userForm.submitted && date.invalid }">
+      </div>
+      <div *ngIf="userForm.submitted && date.invalid" class="Validationcolor">
+        <div *ngIf="date.errors?.['required']">Date of Birth is required*</div>
+        <div *ngIf="date.errors?.['pattern']">Date of Birth must be a valid date in the format YYYY-MM-DD</div>
+        </div>
+    </div>
+  </div>
+
+
+
+
+         <div class="mt-5 ">
+           <label for="" class="text-gray-500 text-sm font-semibold">Progress Notes</label>
+           <div>
+            <textarea class="w-full px-3 py-2 text-gray-700 border-2 border-gray-400 rounded-lg focus:outline-none mt-2  " [(ngModel)]="datauser.progress"  name="progress" #progress="ngModel"  id="progress"
+              placeholder="write here...." rows="4" required [ngClass]="{ 'is-invalid': userForm.submitted && progress.invalid }"></textarea>
+           </div>
+
+           <div *ngIf="userForm.submitted && progress.invalid" class="Validationcolor">
+            <div *ngIf="progress?.errors?.['required']">progress notes is required*</div>
+           </div>
+         </div>
+
+         <div class="mt-5   ">
+           <label for="" class="text-gray-600 text-sm font-semibold ">Intervention Notes</label>
+           <div>
+             <div>
+              <textarea class=" w-full px-3 py-2 text-gray-700 border-2 border-gray-400 rounded-lg focus:outline-none mt-2 xl:mr-28; "  [(ngModel)]="datauser.Intervention"  name=" Intervention"
+              #Intervention="ngModel"  id=" Intervention" placeholder="write here...."  rows="4" [ngClass]="{ 'is-invalid': userForm.submitted && Intervention.invalid }"></textarea>
+             </div>
+             <div *ngIf="userForm.submitted && Intervention.invalid" class="Validationcolor">
+              <div *ngIf="Intervention?.errors?.['required']">Intervention notes is required*</div>
+             </div>
+
+           </div>
+           <div>
+           </div>
+         </div>
+          <div class="mt-8 ">
+            <button class="button">save</button>
+            <button class="button1 ">Cancel</button>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>

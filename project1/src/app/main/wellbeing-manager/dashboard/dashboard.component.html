@@ -1,0 +1,222 @@
+<div class="">
+  <div class="lg:flex">
+    <app-searchbox></app-searchbox>
+
+    <div
+      class="ml-auto mr-10 lg:w-1/6 md:w-3/6 md:inline-block sm:inline-block sm:mt-5 md:mt-2 lg:mt-0"
+    >
+      <select
+        name=""
+        id=""
+        class="text-[#3C3C43] outline-none bg-light_white border border-gray-300 py-2.5 px-2 rounded-lg w-full"
+      >
+        <option>Site</option>
+      </select>
+    </div>
+    <div class="md:inline-block sm:inline-block lg:mr-1">
+      <div class="flex -space-x-2 overflow-hidden">
+        <div class="flex mt-2">
+          <h1 class="bg-green-400 w-2 h-2 mt-2 mr-1 rounded-full"></h1>
+          <span class="mr-3"> online </span>
+        </div>
+        <img
+          class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+          src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          alt=""
+        />
+        <img
+          class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+          src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          alt=""
+        />
+        <img
+          class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+          alt=""
+        />
+        <img
+          class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          alt=""
+        />
+        <img
+          class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+          src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-10 bg-white grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2  ">
+    <div *ngFor="let card of mainData.CardData">
+      <div
+        class=" w-full h-36 bg-white rounded-lg px-4 justify-between my-auto flex"
+        routerLink="/wellbeing-manager/alerts-list"
+      >
+        <div class="my-auto lg:border-l-2 lg:h-28" >
+          <p class="font-semibold text-lg lg:pl-5 lg:mt-6">{{ card.title }}</p>
+          <p class="mt-2 font-semibold text-xs lg:pl-5">
+            <img src="{{ card.img }}" alt="" class="inline w-3.5" />
+            <span class="" [style.color]="card.color">
+              +{{ card.percent }}</span
+            >
+          </p>
+        </div>
+        <div class="my-auto">
+          <circle-progress
+            [percent]="card.value"
+            [radius]="50"
+            [outerStrokeWidth]="10"
+            [innerStrokeWidth]="5"
+            [outerStrokeColor]="card.color1"
+            [innerStrokeColor]="card.color2"
+            [animation]="true"
+            [animationDuration]="300"
+            class="h-32"
+          ></circle-progress>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lg:flex lg:space-x-5 mt-5">
+    <div class="rounded bg-white sm:mb-8 lg:mb-0 lg:w-4/5 xl:w-9/12">
+      <p class="text-lg font-bold ml-5 mt-2">Therapy Sessions</p>
+      <div id="chart">
+        <apx-chart
+          [series]="lineChartOptions.series"
+          [chart]="lineChartOptions.chart"
+          [xaxis]="lineChartOptions.xaxis"
+          [stroke]="lineChartOptions.stroke"
+          [dataLabels]="lineChartOptions.dataLabels"
+          [yaxis]="lineChartOptions.yaxis"
+          [labels]="lineChartOptions.labels"
+          [legend]="lineChartOptions.legend"
+          [title]="lineChartOptions.title"
+          [subtitle]="lineChartOptions.subtitle"
+        ></apx-chart>
+      </div>
+      
+    </div>
+
+    <div class="rounded lg:w-1/5 xl:w-3/12 space-y-5 bg-white p-2">
+      <h2 class="font-semibold text-lg">Psych Health - MSP</h2>
+
+      <div class="flex h-16 rounded border">
+        <div class="w-1/5 bg-dark_white rounded">
+          <p class="text-center font-bold text-2xl py-4">61%</p>
+        </div>
+        <div class="bg-white w-4/5">
+          <p class="px-10 my-4">Mentally Fit</p>
+        </div>
+      </div>
+
+      <div class="flex h-16 rounded border">
+        <div class="w-1/5 bg-dark_white rounded">
+          <p class="text-center font-bold text-2xl py-4">88</p>
+        </div>
+        <div class="bg-white w-4/5">
+          <p class="px-10 my-5">Resilience Score</p>
+        </div>
+      </div>
+
+      <div class="flex h-16 rounded border">
+        <div class="w-1/5 bg-dark_white rounded">
+          <p class="text-center font-bold text-2xl py-4">88</p>
+        </div>
+        <div class="bg-white w-4/5">
+          <p class="px-4 my-2">Employees selected high</p>
+          <!-- <p class="px-4 my-1">intensity positive mood</p> -->
+        </div>
+      </div>
+
+      <div class="flex h-16 rounded border">
+        <div class="w-1/5 bg-dark_white rounded">
+          <p class="text-center font-bold text-2xl py-4">78</p>
+        </div>
+        <div class="bg-white w-4/5">
+          <p class="px-4 my-5">Subjective Wellbeing</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="flow-root">
+          <p class="w-44 font-medium text-sm float-left">95 % Employees finished daily tasks</p>
+
+          <div class="float-right">
+            <img
+              class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+              src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              alt=""
+            />
+            <img
+              class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+              src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              alt=""
+            />
+            <img
+              class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+              alt=""
+            />
+            <img
+              class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lg:flex lg:space-x-5 mt-4">
+    <div class="rounded bg-white lg:w-9/12 sm:mb-8 lg:mb-0">
+      <p class="mt-2 ml-5 font-bold text-lg">Mood Check In</p>
+      <div id="chart">
+        <apx-chart
+          [series]="barChartOptions.series"
+          [chart]="barChartOptions.chart"
+          [dataLabels]="barChartOptions.dataLabels"
+          [plotOptions]="barChartOptions.plotOptions"
+          [yaxis]="barChartOptions.yaxis"
+          [legend]="barChartOptions.legend"
+          [fill]="barChartOptions.fill"
+          [stroke]="barChartOptions.stroke"
+          [tooltip]="barChartOptions.tooltip"
+          [xaxis]="barChartOptions.xaxis"
+        ></apx-chart>
+      </div>
+      
+    </div>
+
+    <div class="rounded bg-white lg:w-3/12">
+      <h3 class="px-5 py-2 text-lg font-bold">Top 3 Mood Sources</h3>
+      <div class="w-80">
+        <div id="chart" class="mb-10 2xl:ml-10">
+          <apx-chart
+            [series]="radialChart.series"
+            [chart]="radialChart.chart"
+            [labels]="radialChart.labels"
+            [legend]="radialChart.legend"
+            [colors]="radialChart.colors"
+          ></apx-chart>
+          <!-- [plotOptions]="radialChart.plotOptions" -->
+          <!-- [colors]="radialChart.legend" -->
+        </div>
+      </div>
+      <div class="border-t-2 pb-2">
+        <div class="flex mt-2">
+          <div class="w-2/4">
+            <p class="font-bold text-2xl ml-5 mt-1"> 21 %</p>
+          </div>
+          <div class="text-sm">
+            <span> Employee Chose work as </span>
+            <span> there negative mood source </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

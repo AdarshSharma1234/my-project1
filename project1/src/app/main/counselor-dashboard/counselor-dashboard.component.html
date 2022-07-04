@@ -1,0 +1,229 @@
+<div class="w-full lg:flex  mb-6">
+  <div class="w-1/2">
+    <app-searchbox></app-searchbox>
+  </div>
+
+  <div class="md:inline-block sm:inline-block lg:mr-4 lg:ml-auto sm:ml-4">
+    <div class="flex -space-x-2 overflow-hidden">
+      <div class="flex mt-2">
+        <h1 class="bg-[#69BD6D] w-2 h-2 mt-2 mr-1 rounded-full"></h1>
+        <span class="mr-3"> Online </span>
+      </div>
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+        alt=""
+      />
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+    </div>
+  </div>
+  <div class="inline md:ml-4 lg:ml-0">
+    <img
+      class="inline-block h-10 w-10 rounded-full"
+      src="../../../assets/img/plus-img.svg"
+      alt=""
+    />
+  </div>
+</div>
+
+<!--  -->
+<div>
+  <!-- card box -->
+  <div class="head-card-box">
+    <!-- card 1 -->
+
+    <div class="flex">
+      <div class="head-cards">
+        <img src="../../../assets/img/client-logo.png" alt="" class="m-auto" />
+      </div>
+      <div class="pt-3 ml-4">
+        <p class="no-of-clients">Total No of Clients</p>
+        <p class="clients-count">10</p>
+      </div>
+    </div>
+
+    <!-- card 2 -->
+
+    <div class="flex border-l">
+      <div class="head-cards ml-8">
+        <img
+          src="../../../assets/img/flower-in-hand.png"
+          alt=""
+          class="m-auto"
+        />
+      </div>
+      <div class="pt-3 ml-4">
+        <p class="no-of-clients">No of Therapy Clients</p>
+        <p class="clients-count">5</p>
+      </div>
+    </div>
+
+    <!-- card 3 -->
+
+    <div class="flex border-l">
+      <div class="head-cards ml-8">
+        <img
+          src="../../../assets/img/star-with-check.png"
+          alt=""
+          class="m-auto"
+        />
+      </div>
+      <div class="pt-3 ml-4">
+        <p class="no-of-clients">No of Verification Requests</p>
+        <p class="clients-count">5</p>
+      </div>
+    </div>
+
+    <!--  -->
+  </div>
+
+  <!-- for cards details -->
+
+  <div class="bg-[#FFFFFF] overflow-hidden min-md mt-6">
+    <div class="width-52 flex ml-10 mt-4">
+      <p
+        class="border-b text-[#8A8A8A] text-[16px] pb-1 w-16 pl-1 cursor-pointer"
+        (click)="changeTabs('today')"
+        [ngClass]="today ? 'tab-active text-primary_color font-semibold today-completed-tab' : ''"
+      >
+        Today
+      </p>
+
+      <p
+        class="border-b w-48 cursor-pointer text-[#8A8A8A]  text-[16px] pb-1 pl-2 "
+        (click)="changeTabs('completed_sessions')"
+        [ngClass]="
+          completed_sessions
+            ? 'tab-active text-primary_color font-semibold today-completed-tab'
+            : ''
+        "
+      >
+        Completed Sessions
+      </p>
+    </div>
+    <!-- div for completed sessions -->
+    <div *ngIf="completed_sessions" class="divs-for-tabs text-primary-content">
+      <div class="div-ngFor" *ngFor="let data of card_data.user">
+        <div class="">
+          <!-- span for profile and name -->
+          <span class="flex">
+            <img
+              src="{{ data.profile_pic }}"
+              class="profile-image"
+              alt="icon"
+            />
+            <div class="ml-2 mt-1">
+              <span class>
+                <p class="profile-name">
+                  {{ data.name }}
+                </p>
+                <p class="designation">{{ data.designation }}</p>
+              </span>
+            </div>
+          </span>
+        </div>
+        <!-- div for date and time -->
+        <div class="date-time-div">
+          <img src="{{ data.date_icon }}" alt="date-icon" class="date-icon" />
+          <p class="date-text">{{ data.date }}</p>
+          <img src="{{ data.time_icon }}" alt="time-icon" class="time-icon" />
+          <p class="date-text ">{{ data.time }}</p>
+        </div>
+        <!-- for assignment div -->
+        <div class="flex mb-6 pt-0.5">
+          <p class="assignment">{{ data.assignment }}</p>
+          <span [ngClass]="data.homework_status === 'Not done' ? 'bg-[#8A8A8A1A] text-[#8A8A8A]' : 'bg-[#F1717133] text-[#F17171]'" class="assignment-status"> {{ data.homework_status }} </span>
+          <app-button
+            [text]="'Assign'"
+            [btnClass]="'bg-primary_color text-white px-10 py-1 rounded'"
+            class="app-button-class"
+            routerLink="/assign-homework"
+          ></app-button>
+        </div>
+
+        <!-- for documentation div -->
+        <div class="flex">
+          <p class="assignment">{{ data.documentation }}</p>
+          <span [ngClass]="data.documentation_status === 'Pending' ? 'bg-[#FFB06733] text-[#FFB067]' : 'bg-[#4E989F33] text-[#4E989F]'" class="documentation-status"> {{ data.documentation_status }} </span>
+          <app-button
+            [text]="'Assign'"
+            [btnClass]="'bg-primary_color text-white px-10 py-1 rounded'"
+            class="app-button-class"
+            routerLink="/mse-form"
+          ></app-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- for today section div -->
+    <div *ngIf="today" class="divs-for-tabs">
+      <div class="div-ngFor" *ngFor="let data of card_data.user">
+        <div class="">
+          <!-- span for profile and name -->
+          <span class="flex">
+            <img
+              src="{{ data.profile_pic }}"
+              class="profile-image"
+              alt="icon"
+            />
+            <div class="ml-2 mt-1">
+              <span class>
+                <p class="profile-name">
+                  {{ data.name }}
+                </p>
+                <p class="designation">{{ data.designation }}</p>
+              </span>
+            </div>
+          </span>
+        </div>
+        <!-- div for date and time -->
+        <div class="date-time-div">
+          <img src="{{ data.date_icon }}" alt="date-icon" class="date-icon" />
+          <p class="date-text">{{ data.date }}</p>
+          <img src="{{ data.time_icon }}" alt="time-icon" class="time-icon " />
+          <p class="date-text">4:00 PM - 4:50 PM</p>
+        </div>
+        <!-- for verification div -->
+        <div class="flex mb-6 pt-0.5 mt-4">
+          <img
+            src="../../../assets/img/verification.png"
+            alt="verification"
+            class="h-6 w-7 mr-2"
+          />
+          <p class="assignment mr-3">Verification</p>
+          <span class="text-hptf"> HPTF </span>
+        </div>
+
+        <!-- for buttons div -->
+        <div class="flex">
+          <app-button
+            [text]="'Check-In'"
+            [btnClass]="'bg-primary_color px-6 py-2 text-white rounded'"
+            class="font-semibold text-[12px]"
+          ></app-button>
+
+          <button class="button-no-show">No Show</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

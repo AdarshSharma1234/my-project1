@@ -1,0 +1,165 @@
+<div class="lg:flex">
+  <app-searchbox></app-searchbox>
+
+  <div
+    class="md:inline-block sm:inline-block lg:mr-4 lg:ml-auto sm:mt-5 lg:mt-0 sm:ml-5"
+  >
+    <div class="flex -space-x-2 overflow-hidden">
+      <div class="flex mt-2">
+        <h1 class="bg-green-400 w-2 h-2 mt-2 mr-1 rounded-full"></h1>
+        <span class="mr-3"> online </span>
+      </div>
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+        alt=""
+      />
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+      <img
+        class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+        src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        alt=""
+      />
+    </div>
+  </div>
+
+  <div class="inline md:ml-4 lg:ml-0">
+    <img
+      class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+      src="../../../assets/img/plus-img.svg"
+      alt=""
+    />
+  </div>
+</div>
+
+<!-- Filter button   Opertion  -->
+<div class="flex justify-between my-8">
+  <h3 class="text-2xl font-semibold text-[#292929] mt-3">Counselor Availability</h3>
+  <button
+    class="bg-white p-3 flex filterBtn rounded-md border border-[#8A8A8E] text-[#3C3C43] text-[16px] leading-[22px] font-normal"
+    data-bs-toggle="collapse"
+    aria-expanded="false"
+    (click)="isDropDown = !isDropDown"
+    #txt
+  >
+    Filter
+    <img
+      class="h-[16px] w-[16px] ml-4 mt-1"
+      src="../../../../assets/img/Vector.svg"
+      alt="filter-svg"
+    />
+  </button>
+  <ng-container *ngIf="isDropDown" class="ml-96">
+    <div
+      class="w-[15%] bg-white shadow-xl dropCheck top-40 absolute right-12 z-10"
+    >
+      <div class="pt-4 mx-4">
+        <p class="font-semibold text-[18px] leading-[22px] text-[#292929]">
+          Filter
+        </p>
+      </div>
+      <div class="m-6">
+        <ul>
+          <li
+            class="text-gray-500 text-[14px] leading-[17px] font-semibold mt-5 mb-2"
+          >
+            Status
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              class="accent-[#4E989F]"
+              id="available"
+              name="available"
+            />
+            <label for="available" class="ml-1 text-slate-400">Available</label>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              class="accent-[#4E989F]"
+              id="onleave"
+              name="onleave"
+            />
+            <label for="onleave" class="ml-1 text-slate-400">On Leave</label>
+          </li>
+        </ul>
+      </div>
+      <div class="py-2 m-6 bg-[#4E989F] rounded-md text-center">
+        <button class="viewButton">Apply</button>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="grid grid-cols-1 gap-y-4  py-8 gap-x-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+  <div class="bg-[#FFFFFF] h-64 text-center items-center justify-center shadow-inner rounded-md" routerLink="/wbm-counselor/counselor-details"
+      *ngFor="let puneet of data.users">
+      <div class="mt-4 h-24 w-24 mx-auto overflow-hidden items-center text-center">
+          <img src="{{ puneet.img }}" alt="." class="w-24 h-24 object-center object-cover rounded-full" />
+      </div>
+      <h3 class="mt-4 text-base font-semibold items-center text-[#111827]">
+        {{ puneet.name }}
+      </h3>
+      <p class="mt-1 text-xs font-normal text-[#6B7280]">{{ puneet.post }}</p>
+      <h2 class="mt-4 text-sm text-[#EE7452] font-semibold">MSP</h2>
+      <div class="bg-[#4E989F1A] mt-2 h-10 text-center">
+        <h2
+          class="font-medium text-base py-2"
+          [ngClass]="
+            puneet.status == 'On Leave'
+              ? 'bg-[#FDF1E7] text-orange-400'
+              : 'bg-[#ECF4F4]'
+          "
+        >
+          {{ puneet.status }}
+        </h2>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Paginations -->
+<div class="flex justify-between ">
+    <div class="flex text-center space-x-8 ">
+        <p class="text-base font-normal py-4 text-center  text-[#000000]">Show</p>
+        <select name="" id="" class=" bg-[#F5F5F5] px-4 rounded-lg outline-none">
+            <option value="10">10</option>
+            <option value="10">20</option>
+            <option value="10">50</option>
+        </select>
+        <p class="text-base font-normal text-center py-4   text-[#000000]">entries</p>
+    </div>
+    <div>
+        <ul class="inline-flex items-center space-x-5  ">
+            <li class="bg-[#FFFDFA] py-3 px-5 border-2 border-solid rounded-lg border-[#4E989F] ">
+                <a href="self" class="leading-tight text-[#4E989F] text-base font-medium  ">1</a>
+            </li>
+            <li class="bg-[#F5F5F5] py-3 px-5 rounded-lg shadow-sm  ">
+                <a href="self" class="leading-tight text-[#000000] text-base font-medium  ">2</a>
+            </li>
+            <li class="bg-[#F5F5F5] py-3 px-5  shadow-sm rounded-lg  ">
+                <a href="self" class="leading-tight text-[#4E989F] text-base font-medium  ">3</a>
+            </li>
+            <li>
+                <a href="#" class="py-2 px-3 leading-tight text-gray-500 ">Next</a>
+            </li>
+        </ul>
+    </div>
+
+</div>

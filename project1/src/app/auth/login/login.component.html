@@ -1,0 +1,17 @@
+<div class="bg-gray-100 min-h-screen">
+  <h3 class="text-center text-2xl text-gray-700 font-semibold pt-20">BIRDIE</h3>
+  <div class="login">
+    <form class="form">
+      <label
+        for="userid"
+        class="block mr-48 mt-6 text-gray-600 mb-2 text-md font-semibold"
+        >User Id :</label
+      >
+      <input type="text" (keypress)="numberOnly($event)" class="input" #value />
+
+      <button type="submit" class="button" (click)="logIn(value.value)">
+        Log In
+      </button>
+    </form>
+  </div>
+</div>

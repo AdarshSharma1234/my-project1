@@ -1,0 +1,145 @@
+<div>
+  <div class="font-extrabold mx-10 my-9 whitespace-nowrap">
+    <img
+      src="../../assets/img/sidebarellipse.svg"
+      alt=""
+      class="inline-block mr-4"
+    />
+    <span class="text-light_white text-lg">Teams.co</span>
+  </div>
+
+  <div class="text-center">
+    <img src="../../assets/img/Mask Group.svg" alt="" class="userimg" />
+    <div class="empty ring-white ring-1"></div>
+    <p class=" text-light_white1 font-semibold ">Manoj</p>
+    <ng-container *ngIf="userRole == 'COUNSELOR'">
+      <p class="text-light_gray mb-5 text-[10px] font-medium">Counselor</p>
+    </ng-container>
+    <ng-container *ngIf="userRole == 'MANAGER'">
+      <p class="text-light_gray mb-5 text-xs font-medium">Wellbeing Manager</p>
+    </ng-container>
+  </div>
+
+  <div class="mt-10">
+    <ul class="text-light_white1 font-semibold">
+      <li
+        routerLink="/main/wellbeing-manager"
+        routerLinkActive="active"
+        *ngIf="userRole == 'MANAGER'"
+      >
+        <div class="list">
+          <a>
+            <img
+              src="../../assets/img/dashboard.svg"
+              alt=""
+              class=""
+              class="inline-block w-5"
+            />
+            <span class="ml-5 text-sm">Dashboard</span>
+          </a>
+        </div>
+      </li>
+      <!-- *ngIf="userRole == 'MANAGER'" -->
+      <li
+        routerLink="/main/counselor-dashboard"
+        routerLinkActive="active"
+        *ngIf="userRole == 'COUNSELOR'"
+      >
+        <div class="list">
+          <a>
+            <img
+              src="../../assets/img/dashboard.svg"
+              alt=""
+              class=""
+              class="inline-block w-5"
+            />
+            <span class="ml-5 text-sm whitespace-nowrap"> Dashboard</span>
+          </a>
+        </div>
+      </li>
+
+      <li
+        routerLink="/main/my-clients"
+        routerLinkActive="active"
+        *ngIf="userRole == 'COUNSELOR'"
+      >
+        <div class="list">
+          <a>
+            <img
+              src="../../assets/img/dashboard.svg"
+              alt=""
+              class=""
+              class="inline-block w-5"
+            />
+            <span class="ml-5 text-sm whitespace-nowrap">My Clients</span>
+          </a>
+        </div>
+      </li>
+
+      <li
+        routerLink="/main/wbm-counselor"
+        routerLinkActive="active"
+        *ngIf="userRole == 'MANAGER'"
+      >
+        <div class="list logo">
+          <a class="">
+            <img src="../../assets/img/people.svg" class="inline-block w-5" />
+            <span class="ml-5 text-sm">Counselors</span>
+          </a>
+        </div>
+      </li>
+
+      <li routerLinkActive="active" *ngIf="userRole == 'MANAGER'">
+        <div class="list logo whitespace-nowrap">
+          <a>
+            <img
+              src="../../assets/img/alert.svg"
+              alt=""
+              class="inline-block w-5"
+            />
+            <span class="ml-5 text-sm">Risk Report</span>
+          </a>
+        </div>
+      </li>
+
+      <li routerLinkActive="active" *ngIf="userRole == 'COUNSELOR'">
+        <div class="list logo whitespace-nowrap">
+          <a>
+            <img
+              src="../../assets/img/calendar-sidbar.svg"
+              alt=""
+              class="inline-block w-5"
+            />
+            <span class="ml-5 text-sm">Calendar</span>
+          </a>
+        </div>
+      </li>
+
+      <li (click)="chatbox('/chatbox')" routerLinkActive="active">
+        <div class="list logo">
+          <a>
+            <img
+              src="../../assets/img/chat.svg"
+              alt=""
+              class="inline-block w-4 ml-0.5 mr-0.5 text-light-gray"
+            />
+            <span class="ml-5 text-sm">ChatBox</span>
+          </a>
+        </div>
+      </li>
+
+      <li>
+        <div class="list logo" routerLinkActive="active">
+          <a>
+            <img
+              src="../../assets/img/settings.svg"
+              alt=""
+              class="inline-block w-5"
+            />
+            <span class="ml-5 text-sm">Settings</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

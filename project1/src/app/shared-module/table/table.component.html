@@ -1,0 +1,21 @@
+<table [ngClass]="settings.tableClass">
+    <thead [ngClass]="settings.tableHead">
+        <tr [ngClass]="settings.tableHeadTrClass">
+            <td [ngClass]="settings.tableHeadTdClass" *ngFor = "let key of colData"> {{key.header}} </td>
+            <td *ngIf="settings.enableActions">Report</td>
+        </tr>
+    </thead>
+    <tbody [ngClass]="settings.tableBody">
+        <tr [ngClass]="settings.tableBodyTrClass" *ngFor="let tab of gridData">
+            <td  [ngClass]="settings.tableBodyTdClass" *ngFor="let col of colData" >
+                <span [ngClass]="col.class" >{{tab[col.field]}}</span>
+            </td>
+            <ng-container *ngIf="settings.enableActions">
+                <td><span *ngFor="let btn of settings.buttons">
+                    <button *ngIf="settings.isIconEnabled" (click)="action(tab,btn)" [ngClass]="btn && btn.class?btn.class:''"  ><img [src]="'../../../../assets/img/'+btn.iconClass" alt=""></button>
+                    <button *ngIf="!settings.isIconEnabled" [ngClass]="btn && btn.class?btn.class:''" (click)="action(tab,btn)">{{btn.name}}</button>
+                </span></td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>

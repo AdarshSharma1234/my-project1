@@ -1,0 +1,347 @@
+<div>
+  <!-- div for dashboard/completed sessions -->
+  <div>
+    <span class="text-[14px] font-[600]">Dashboard</span>
+    <span class="text-[14px] font-[600]"> / </span>
+    <span class="text-[14px] font-[600]">Completed Sessions</span>
+    <span class="text-[14px] font-[400] text-[#8A8A8A]"> / </span>
+    <span class="text-[14px] font-[400] text-[#8A8A8A]">Craig Bator</span>
+  </div>
+  <!-- div for dashboard/completed sessions -->
+
+  <!-- div for home work and preview -->
+
+  <div class="flex my-4">
+    <p class="text-[#292929] text-[29px] font-semibold">Homework</p>
+    <button
+      class="ml-auto text-[#8A8A8E] text-[17px] font-semibold rounded border border-[#8A8A8E] px-9"
+    >
+      Preview
+    </button>
+  </div>
+
+  <!-- div for home work and preview -->
+
+  <div class="grid grid-cols-6 text-xl bg-white font-medium mt-10">
+    <div
+      class="home-work-tabs"
+      (click)="changeTabs('worksheet')"
+      [ngClass]="worksheet ? 'activeTabs' : ''"
+    >
+      Worksheets
+    </div>
+    <div
+      class="home-work-tabs"
+      (click)="changeTabs('assessment')"
+      [ngClass]="assessment ? 'activeTabs' : ''"
+    >
+      Assessment
+    </div>
+    <div
+      class="home-work-tabs"
+      (click)="changeTabs('meditation_vid')"
+      [ngClass]="meditation_vid ? 'activeTabs' : ''"
+    >
+      Meditation Videos
+    </div>
+    <div
+      class="home-work-tabs"
+      (click)="changeTabs('psy_education')"
+      [ngClass]="psy_education ? 'activeTabs' : ''"
+    >
+      Psycho-Education
+    </div>
+    <div
+      class="home-work-tabs"
+      (click)="changeTabs('mini_session')"
+      [ngClass]="mini_session ? 'activeTabs' : ''"
+    >
+      Mini Session
+    </div>
+    <div
+      class="home-work-tabs"
+      (click)="changeTabs('add_note')"
+      [ngClass]="add_note ? 'activeTabs' : ''"
+    >
+      Add Note
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <div *ngIf="worksheet">
+      <div class="bg-[#F8F8F8]">
+        <div class="flow-root">
+          <p class="text-lg font-semibold pl-10 pt-5 float-left">Worksheet</p>
+          <app-searchbox class="float-right mr-10 my-5"></app-searchbox>
+        </div>
+        <div class="mx-10 grid grid-cols-3 gap-5 pb-10">
+          <div *ngFor="let data of worksheet_card.data" class="">
+            <div class="border py-10 bg-white">
+              <div class="items-center text-center">
+                <img
+                  src="../../../assets/img/document.svg"
+                  alt=""
+                  class="mx-auto"
+                />
+                <p class="py-3 text-lg font-bold w">{{ data.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-root">
+        <div class="flex mt-5 float-left">
+          <p>Show</p>
+          <select name="" id="" class="mx-2 p-1">
+            <option value="10">10</option>
+            <option value="10">20</option>
+            <option value="10">50</option>
+          </select>
+          <p>entries</p>
+        </div>
+        <div class="float-right mt-5 space-x-3">
+          <button
+            class="border border-primary_color py-1 px-3 text-primary_color rounded"
+          >
+            1
+          </button>
+          <button
+            class="border border-[#F5F5F5] shadow-sm py-1 px-3 bg-[#F5F5F5] rounded"
+          >
+            2
+          </button>
+          <button
+            class="border border-[#F5F5F5] shadow-sm py-1 px-3 bg-[#F5F5F5] rounded"
+          >
+            3
+          </button>
+          <button class="text-[#9E9E9E]">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="assessment">
+      <div class="bg-[#F8F8F8]">
+        <div class="flow-root">
+          <p class="text-lg font-semibold pl-10 pt-5 float-left">Assessment</p>
+          <app-searchbox class="float-right mr-10 my-5"></app-searchbox>
+        </div>
+        <div class="mx-10 grid grid-cols-3 gap-5 pb-10">
+          <div *ngFor="let data of worksheet_card.data" class="">
+            <div class="border py-10 bg-white">
+              <div class="items-center text-center">
+                <img
+                  src="../../../assets/img/document.svg"
+                  alt=""
+                  class="mx-auto"
+                />
+                <p class="py-3 text-lg font-bold w">{{ data.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-root">
+        <div class="flex mt-5 float-left">
+          <p>Show</p>
+          <select name="" id="" class="mx-2 p-1">
+            <option value="10">10</option>
+            <option value="10">20</option>
+            <option value="10">50</option>
+          </select>
+          <p>entries</p>
+        </div>
+        <div class="float-right mt-5 space-x-3">
+          <button
+            class="border border-primary_color py-1 px-3 text-primary_color rounded"
+          >
+            1
+          </button>
+          <button
+            class="border border-[#F5F5F5] shadow-sm py-1 px-3 bg-[#F5F5F5] rounded"
+          >
+            2
+          </button>
+          <button
+            class="border border-[#F5F5F5] shadow-sm py-1 px-3 bg-[#F5F5F5] rounded"
+          >
+            3
+          </button>
+          <button class="text-[#9E9E9E]">Next</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="meditation_vid">
+      <div class="bg-[#F8F8F8]">
+        <div class="flow-root">
+          <p class="text-lg font-semibold pl-10 pt-5 float-left">Worksheet</p>
+          <app-searchbox class="float-right mr-10 my-5"></app-searchbox>
+        </div>
+        <div class="mx-10 grid grid-cols-3 gap-5 pb-10">
+          <div *ngFor="let data of worksheet_card.data" class="">
+            <div class="border pb-10 bg-white">
+              <img src="{{ data.img }}" alt="" class="w-full" />
+              <div class="items-center text-center">
+                <p class="py-3 text-lg font-bold w">{{ data.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-root">
+        <div class="flex mt-5 float-left">
+          <p>Show</p>
+          <select name="" id="" class="mx-2 p-1">
+            <option value="10">10</option>
+            <option value="10">20</option>
+            <option value="10">50</option>
+          </select>
+          <p>entries</p>
+        </div>
+        <div class="float-right mt-5 space-x-3">
+          <button
+            class="border border-primary_color py-1 px-3 text-primary_color rounded"
+          >
+            1
+          </button>
+          <button
+            class="border border-[#F5F5F5] shadow-sm py-1 px-3 bg-[#F5F5F5] rounded"
+          >
+            2
+          </button>
+          <button
+            class="border border-[#F5F5F5] shadow-sm py-1 px-3 bg-[#F5F5F5] rounded"
+          >
+            3
+          </button>
+          <button class="text-[#9E9E9E]">Next</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="psy_education">
+      <div class="bg-[#F8F8F8]">
+        <div class="flow-root">
+          <p class="text-lg font-semibold pl-10 pt-5 float-left">Worksheet</p>
+          <app-searchbox class="float-right mr-10 my-5"></app-searchbox>
+        </div>
+        <div class="mx-10 grid grid-cols-3 gap-5 pb-10">
+          <div *ngFor="let data of worksheet_card.data" class="">
+            <div class="border pb-10 bg-white">
+              <img src="{{ data.img }}" alt="" class="w-full" />
+              <div class="items-center text-center">
+                <p class="py-3 text-lg font-bold w">{{ data.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-root">
+        <div class="flex mt-5 float-left">
+          <p>Show</p>
+          <select name="" id="" class="mx-2 p-1">
+            <option value="10">10</option>
+            <option value="10">20</option>
+            <option value="10">50</option>
+          </select>
+          <p>entries</p>
+        </div>
+        <div class="float-right mt-5 space-x-3">
+          <button
+            class="border border-primary_color py-1 px-3 text-primary_color rounded"
+          >
+            1
+          </button>
+          <button
+            class="border border-[#F5F5F5] shadow-sm py-1 px-3 bg-[#F5F5F5] rounded"
+          >
+            2
+          </button>
+          <button
+            class="border border-[#F5F5F5] shadow-sm py-1 px-3 bg-[#F5F5F5] rounded"
+          >
+            3
+          </button>
+          <button class="text-[#9E9E9E]">Next</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="mini_session">
+      <div class="bg-[#F8F8F8]">
+        <div class="flow-root">
+          <p class="text-lg font-semibold pl-10 pt-5 float-left">Worksheet</p>
+          <app-searchbox class="float-right mr-10 my-5"></app-searchbox>
+        </div>
+        <div class="mx-10 grid grid-cols-3 gap-5 pb-10">
+          <div *ngFor="let data of worksheet_card.data" class="">
+            <div class="border pb-10 bg-white">
+              <img src="{{ data.img }}" alt="" class="w-full" />
+              <div class="items-center text-center">
+                <p class="py-3 text-lg font-bold w">{{ data.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-root">
+        <div class="flex mt-5 float-left">
+          <p>Show</p>
+          <select name="" id="" class="mx-2 p-1">
+            <option value="10">10</option>
+            <option value="10">20</option>
+            <option value="10">50</option>
+          </select>
+          <p>entries</p>
+        </div>
+        <div class="float-right mt-5 space-x-3">
+          <button
+            class="border border-primary_color py-1 px-3 text-primary_color rounded"
+          >
+            1
+          </button>
+          <button
+            class="border border-[#F5F5F5] shadow-sm py-1 px-3 bg-[#F5F5F5] rounded"
+          >
+            2
+          </button>
+          <button
+            class="border border-[#F5F5F5] shadow-sm py-1 px-3 bg-[#F5F5F5] rounded"
+          >
+            3
+          </button>
+          <button class="text-[#9E9E9E]">Next</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="add_note">
+        <div class="bg-white pb-10">
+            <div>
+                <div class="flow-root mx-5 py-10">
+                    <p class="text-xl font-bold float-left">Add Note</p>
+                    <app-searchbox class="float-right"></app-searchbox>
+                </div>
+                <div class="flex gap-10 mx-5">
+                    <div class="bg-white w-1/2">
+                        <div class="border  text-center p-20 space-y-10">
+                            <img src="../../../assets/img/edit-work.svg" alt="" class="mx-auto">
+                            <p class="font-semibold">Create Note Manually</p>
+                            <button class="bg-primary_color text-white px-20 rounded py-2.5 text-lg font-semibold text-center"> Create </button>
+                        </div>
+                    </div>
+                    <div class="w-1/2"> 
+                        <div class="border border-primary_color border-dashed text-center p-16 ">
+                            <img src="../../../assets/img/drag-down.svg" alt="" class="mx-auto">
+                            <p class="mt-4 font-semibold"> Drag-and-drop files here </p>
+                            <p class="my-5 text-[#A9AAAA]">or</p>
+                            <button class="bg-primary_color text-white px-20 rounded py-2.5 text-lg font-semibold text-center"> Choose file </button>
+                            <div class="mt-2">
+                                <p class="text-[#A9AAAA] text-xs "> Format: Images (jpg, png), Pdf, Video </p>
+                                <p class="text-[#A9AAAA] text-xs mt-0"> (mp4, mov, webm), Audio (mp3, m4a, wav) </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

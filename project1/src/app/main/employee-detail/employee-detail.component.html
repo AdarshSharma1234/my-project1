@@ -1,0 +1,819 @@
+<div class="mx-4">
+  <div class="lg:flex mb-5">
+    <app-searchbox></app-searchbox>
+
+    <div
+      class="md:inline-block sm:inline-block lg:mr-4 lg:ml-auto sm:mt-5 lg:mt-0 sm:ml-5"
+    >
+      <div class="flex -space-x-2 overflow-hidden">
+        <div class="flex mt-2">
+          <h1 class="bg-green-400 w-2 h-2 mt-2 mr-1 rounded-full"></h1>
+          <span class="mr-3"> online </span>
+        </div>
+        <ng-container *ngFor="let data of image.imgg">
+          <img class="header-image-collection" src="{{ data.img }}" alt="" />
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="">
+    <h1 class="text-sm font-semibold">
+      Dashboard / Alert List
+      <span class="text-black font-normal">/ Matt Dickerson</span>
+    </h1>
+  </div>
+  <div class="flex">
+    <h1 class="text-2xl font-semibold mt-2">Employee Details</h1>
+    <button
+      *ngIf="userRole == 'COUNSELOR'"
+      routerLink="/risk-assessment-form"
+      class="border bg-primary_color ml-auto text-white px-3 py-2 font-semibold rounded"
+    >
+      Send Alert
+    </button>
+  </div>
+
+  <div class="bg-white min-h-[40rem] pb-5 mt-2 rounded-lg shadow-sm">
+    <div
+      class="mx-4 py-9 rounded sm:text-sm xl:text-base grid sm:grid-cols-2 lg:grid-cols-5 2xl:grid-cols-5"
+    >
+      <div class="ml-5">
+        <img
+          class="inline-block h-32 w-32 rounded-full ring-2 ring-white"
+          src="../../../../assets/img/user-report.svg"
+          alt=""
+        />
+      </div>
+      <div class="md:mt-8">
+        <p class="xl:text-xl 2xl:text-2xl font-semibold">Matt Dickerson</p>
+        <p class="text-gray-500">Employee</p>
+      </div>
+      <div class="">
+        <p class="text-gray-500 mt-5">Employment Id:</p>
+        <p class="font-medium">#20462</p>
+        <p class="text-gray-500 mt-5">Shift Timings:</p>
+        <p class="font-medium">3:30 PM - 12:30 PM</p>
+      </div>
+      <div class="">
+        <p class="text-gray-500 mt-5">Age:</p>
+        <p class="font-medium">30</p>
+        <p class="text-gray-500 mt-5">Team:</p>
+        <p class="font-medium">SSI</p>
+      </div>
+      <div class="">
+        <p class="text-gray-500 mt-5">Gender:</p>
+        <p class="font-medium">Male</p>
+        <p class="text-gray-500 mt-5">Team Leader:</p>
+        <p class="font-medium">Seema G</p>
+      </div>
+    </div>
+
+    <!-- for wellbeing Manager -->
+    <ng-container *ngIf="userRole == 'MANAGER'">
+      <div class="tabs pl-5 mt-4">
+        <p
+          class="tab tab-bordered"
+          (click)="changeTabs('app_activity')"
+          [ngClass]="
+            app_activity ? 'tab-active text-primary_color font-semibold' : ''
+          "
+        >
+          App Activity
+        </p>
+        <p
+          class="tab tab-bordered"
+          (click)="changeTabs('section')"
+          [ngClass]="
+            section ? 'tab-active text-primary_color font-semibold' : ''
+          "
+        >
+          Progress Notes
+        </p>
+        <p
+          class="tab tab-bordered pr-32"
+          (click)="changeTabs('insights')"
+          [ngClass]="
+            insights ? 'tab-active text-primary_color font-semibold' : ''
+          "
+        >
+          Insights
+        </p>
+      </div>
+    </ng-container>
+
+    <!-- for On site counselor -->
+    <ng-container *ngIf="userRole == 'COUNSELOR'">
+      <div class="tabs pl-5 mt-4">
+        <p
+          class="tab tab-bordered"
+          (click)="changeTabs('section')"
+          [ngClass]="
+            section ? 'tab-active text-primary_color font-semibold' : ''
+          "
+        >
+          Progress Notes
+        </p>
+        <p
+          class="tab tab-bordered"
+          (click)="changeTabs('mse')"
+          [ngClass]="mse ? 'tab-active text-primary_color font-semibold' : ''"
+        >
+          MSE
+        </p>
+        <p
+          class="tab tab-bordered"
+          (click)="changeTabs('homework')"
+          [ngClass]="
+            homework ? 'tab-active text-primary_color font-semibold' : ''
+          "
+        >
+          Homework
+        </p>
+        <p
+          class="tab tab-bordered"
+          (click)="changeTabs('app_activity')"
+          [ngClass]="
+            app_activity ? 'tab-active text-primary_color font-semibold' : ''
+          "
+        >
+          App Activity
+        </p>
+        <p
+          class="tab tab-bordered"
+          (click)="changeTabs('insights')"
+          [ngClass]="
+            insights ? 'tab-active text-primary_color font-semibold' : ''
+          "
+        >
+          Insights
+        </p>
+        <p
+          class="tab tab-bordered"
+          (click)="changeTabs('journal')"
+          [ngClass]="
+            journal ? 'tab-active text-primary_color font-semibold' : ''
+          "
+        >
+          Journal
+        </p>
+      </div>
+    </ng-container>
+
+    <div class="ml-8 m-8 graph-box h-full bg-dark_white py-10">
+      <!-- App Activity -->
+      <div *ngIf="app_activity">
+        <div
+          class="container xl:grid xl:grid-cols-2 gap-5 sm:space-y-8 xl:space-y-0"
+        >
+          <div class="bg-light_white ml-8 py-4 rounded sm:mr-8 xl:mr-0">
+            <div class="flex">
+              <p class="text-md pl-2 font-bold">Today's Progress</p>
+              <div class="pt-2.5">
+                <div
+                  class="overflow-hidden h-2 sm:w-36 xl:w-72 2xl:w-96 sm:mx-5 xl:mx-2 2xl:mx-10 text-xs flex bg-[#f3f3f3]"
+                >
+                  <div
+                    class="w-[75%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary_color"
+                  ></div>
+                </div>
+              </div>
+              <div class="flex items-center justify-end">
+                <div class="">
+                  <span class="text-lg font-semibold inline-block"> 75% </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-light_white py-4 rounded mr-8 sm:ml-8 xl:ml-0">
+            <div class="flex">
+              <p class="text-md pl-2 font-bold">Homework Status</p>
+
+              <div class="pt-2.5">
+                <div
+                  class="overflow-hidden h-2 sm:w-36 xl:w-72 2xl:w-96 sm:mx-5 xl:mx-2 2xl:mx-10 text-xs flex bg-[#f3f3f3]"
+                >
+                  <div
+                    class="w-[10%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary_color"
+                  ></div>
+                </div>
+              </div>
+              <div class="flex items-center justify-end">
+                <div class="">
+                  <span class="text-lg font-semibold inline-block"> 10% </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <details class="bg-white cursor-pointer mb-3 mx-8 my-10">
+          <summary
+            class="w-full bg-white text-dark flex justify-between px-4 py-5 acc rounded font-bold"
+          >
+            Mood History
+          </summary>
+          <div id="chart">
+            <apx-chart
+              [series]="lineChartOptions.series"
+              [chart]="lineChartOptions.chart"
+              [xaxis]="lineChartOptions.xaxis"
+              [dataLabels]="lineChartOptions.dataLabels"
+              [grid]="lineChartOptions.grid"
+              [stroke]="lineChartOptions.stroke"
+              [title]="lineChartOptions.title"
+            ></apx-chart>
+          </div>
+        </details>
+
+        <details class="bg-white cursor-pointer mb-3 mx-8 my-10">
+          <summary
+            class="w-full bg-white text-dark flex justify-between px-4 py-5 acc rounded font-bold"
+          >
+            Therapy Sessions
+          </summary>
+          <div
+            class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 pb-5 ml-5"
+          >
+            <div>
+              <p class="therapy-session">Booked Session</p>
+              <p class="therapy-class">30</p>
+            </div>
+
+            <div>
+              <p class="therapy-session">Session Done</p>
+              <p class="therapy-class">20</p>
+            </div>
+
+            <div>
+              <p class="therapy-session">Rescheduled Sessions</p>
+              <p class="therapy-class">08</p>
+            </div>
+
+            <div>
+              <p class="therapy-session">Cancelled Session</p>
+              <p class="therapy-class">05</p>
+            </div>
+
+            <div>
+              <p class="therapy-session">No Shows Session</p>
+              <p class="therapy-class">05</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="bg-white cursor-pointer mb-3 mx-8 my-10">
+          <summary
+            class="w-full bg-white text-dark flex justify-between px-4 py-5 acc rounded font-bold"
+          >
+            Mini Sessions
+          </summary>
+          <p class="px-4 py-3">
+            Nunc posuere dapibus urna quis cursus. Mauris malesuada tincidunt
+            diam vel placerat mi tincidunt ac. Nullam augue urna, venenatis ut
+            blandit eget, auctor vel eros. In ut dolor ante
+          </p>
+        </details>
+      </div>
+
+      <!-- progress notes -->
+      <div *ngIf="section">
+        <div>
+          <div class="flow-root mx-5">
+            <h2 class="float-left font-semibold text-xl">Progress Notes</h2>
+            <button
+              class="float-right border-primary_color border-2 px-4 py-2 text-primary_color font-medium rounded"
+            >
+              View History
+            </button>
+          </div>
+          <hr class="my-7" />
+          <div class="bg-light_white rounded pb-5 mx-5">
+            <h1 class="p-5 font-semibold">Progress Notes</h1>
+
+            <div class="grid sm:grid-cols-2 xl:grid-cols-3">
+              <div class="progress-list">
+                <p class="progress-notes-head">Name</p>
+                <p class="progress-notes-data">Matt Dickerson</p>
+              </div>
+              <div class="progress-list">
+                <p class="progress-notes-head">Team</p>
+                <p class="progress-notes-data">SSI</p>
+              </div>
+              <div class="progress-list">
+                <p class="progress-notes-head">Date</p>
+                <p class="progress-notes-data">13/05/2022</p>
+              </div>
+              <div class="progress-list">
+                <p class="progress-notes-head">Presenting Concern</p>
+                <p class="progress-notes-data">Lorem, ipsum.</p>
+              </div>
+              <div class="progress-list">
+                <p class="progress-notes-head">Any Referrals</p>
+                <p class="progress-notes-data">Yes</p>
+              </div>
+              <div class="progress-list">
+                <p class="progress-notes-head">Follow up Required</p>
+                <p class="progress-notes-data">Yes</p>
+              </div>
+              <div class="progress-list">
+                <p class="progress-notes-head">Severity</p>
+                <p class="progress-notes-data">Medium</p>
+              </div>
+              <div class="progress-list">
+                <p class="progress-notes-head">Referral Names</p>
+                <p class="progress-notes-data">Emery Dias</p>
+              </div>
+              <div class="progress-list">
+                <p class="progress-notes-head">Follow up Date</p>
+                <p class="progress-notes-data">12/05/2022</p>
+              </div>
+            </div>
+
+            <div class="progress-list mt-3">
+              <p class="progress-notes-head">Public Notes</p>
+              <p class="progress-notes-data">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Placeat iure consequuntur sapiente commodi consequatur ea quia
+                tempore cupiditate iusto nam ullam quisquam, esse ipsum deserunt
+                a nemo, qui tenetur labore maxime ut maiores explicabo optio
+                molestiae doloremque! Excepturi magnam eveniet alias
+                perspiciatis ratione autem maiores suscipit maxime, dicta
+                inventore non placeat, dolorum, iure rerum numquam id sequi
+                nobis error dolor.
+              </p>
+            </div>
+
+            <div class="progress-list mt-6">
+              <p class="progress-notes-head">Intervention Notes</p>
+              <p class="progress-notes-data">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Placeat iure consequuntur sapiente commodi consequatur ea quia
+                tempore cupiditate iusto nam ullam quisquam, esse ipsum deserunt
+                a nemo, qui tenetur labore maxime ut maiores explicabo optio
+                molestiae doloremque! Excepturi magnam eveniet alias
+                perspiciatis ratione autem maiores suscipit maxime, dicta
+                inventore non placeat, dolorum, iure rerum numquam id sequi
+                nobis error dolor.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insights -->
+      <div *ngIf="insights">
+        <div class="flex space-x-5 mx-8">
+          <section class="w-8/12 bg-white rounded">
+            <div class="tabs mt-3">
+              <p
+                class="tab tab-bordered text-cyan-700 hover:text-cyan-800"
+                (click)="subTabs('all')"
+                [ngClass]="
+                  all ? 'tab-active text-primary_color font-semibold' : ''
+                "
+              >
+                All
+              </p>
+              <p
+                class="tab tab-bordered"
+                (click)="subTabs('ptsd')"
+                [ngClass]="
+                  ptsd ? 'tab-active text-primary_color font-semibold' : ''
+                "
+              >
+                PTSD
+              </p>
+              <p
+                class="tab tab-bordered"
+                (click)="subTabs('burnout')"
+                [ngClass]="
+                  burnout ? 'tab-active text-primary_color font-semibold' : ''
+                "
+              >
+                Burnout
+              </p>
+              <p
+                class="tab tab-bordered"
+                (click)="subTabs('anxiety')"
+                [ngClass]="
+                  anxiety ? 'tab-active text-primary_color font-semibold' : ''
+                "
+              >
+                Anxiety
+              </p>
+              <p
+                class="tab tab-bordered"
+                (click)="subTabs('depression')"
+                [ngClass]="
+                  depression
+                    ? 'tab-active text-primary_color font-semibold'
+                    : ''
+                "
+              >
+                Deprerssion
+              </p>
+              <p
+                class="tab tab-bordered"
+                (click)="subTabs('stress')"
+                [ngClass]="
+                  stress ? 'tab-active text-primary_color font-semibold' : ''
+                "
+              >
+                Work Stress
+              </p>
+            </div>
+
+            <!--All Chart Canvas -->
+            <div *ngIf="all" class="w-2/4 ml-10 py-5">
+              <div id="chart">
+                <apx-chart
+                  [series]="radialChart.series"
+                  [chart]="radialChart.chart"
+                  [plotOptions]="radialChart.plotOptions"
+                  [labels]="radialChart.labels"
+                ></apx-chart>
+              </div>
+
+              <div id="chart"></div>
+            </div>
+
+            <!-- PTSD Chart Canvas -->
+            <div *ngIf="ptsd" class="w-2/4 ml-10 py-5">
+              <div id="chart">
+                <apx-chart
+                  [series]="areaChartOptions.series"
+                  [chart]="areaChartOptions.chart"
+                  [xaxis]="areaChartOptions.xaxis"
+                  [stroke]="areaChartOptions.stroke"
+                  [dataLabels]="areaChartOptions.dataLabels"
+                  [yaxis]="areaChartOptions.yaxis"
+                  [labels]="areaChartOptions.labels"
+                  [legend]="areaChartOptions.legend"
+                  [title]="areaChartOptions.title"
+                  [subtitle]="areaChartOptions.subtitle"
+                ></apx-chart>
+              </div>
+            </div>
+
+            <!-- Burnout Chart Canvas -->
+            <div *ngIf="burnout" class="w-2/4 ml-10 py-5">
+              <div id="chart">
+                <apx-chart
+                  [series]="burnoutChartOptions.series"
+                  [chart]="burnoutChartOptions.chart"
+                  [xaxis]="burnoutChartOptions.xaxis"
+                  [stroke]="burnoutChartOptions.stroke"
+                  [dataLabels]="burnoutChartOptions.dataLabels"
+                  [yaxis]="burnoutChartOptions.yaxis"
+                  [labels]="burnoutChartOptions.labels"
+                  [legend]="burnoutChartOptions.legend"
+                  [title]="burnoutChartOptions.title"
+                  [subtitle]="burnoutChartOptions.subtitle"
+                ></apx-chart>
+              </div>
+            </div>
+
+            <!-- Anxiety Chart Canvas -->
+            <div *ngIf="anxiety" class="w-2/4 ml-10 py-5">
+              <div id="chart">
+                <apx-chart
+                  [series]="anxietyChartOptions.series"
+                  [chart]="anxietyChartOptions.chart"
+                  [xaxis]="anxietyChartOptions.xaxis"
+                  [stroke]="anxietyChartOptions.stroke"
+                  [dataLabels]="anxietyChartOptions.dataLabels"
+                  [yaxis]="anxietyChartOptions.yaxis"
+                  [labels]="anxietyChartOptions.labels"
+                  [legend]="anxietyChartOptions.legend"
+                  [title]="anxietyChartOptions.title"
+                  [subtitle]="anxietyChartOptions.subtitle"
+                ></apx-chart>
+              </div>
+            </div>
+
+            <!-- Depression Chart Canvas -->
+            <div *ngIf="depression" class="w-2/4 ml-10 py-5">
+              <div id="chart">
+                <apx-chart
+                  [series]="depressionChartOptions.series"
+                  [chart]="depressionChartOptions.chart"
+                  [xaxis]="depressionChartOptions.xaxis"
+                  [stroke]="depressionChartOptions.stroke"
+                  [dataLabels]="depressionChartOptions.dataLabels"
+                  [yaxis]="depressionChartOptions.yaxis"
+                  [labels]="depressionChartOptions.labels"
+                  [legend]="depressionChartOptions.legend"
+                  [title]="depressionChartOptions.title"
+                  [subtitle]="depressionChartOptions.subtitle"
+                ></apx-chart>
+              </div>
+            </div>
+
+            <!-- work-stress Chart Canvas -->
+            <div *ngIf="stress" class="w-2/4 ml-10 py-5">
+              <div id="chart">
+                <apx-chart
+                  [series]="stressChartOptions.series"
+                  [chart]="stressChartOptions.chart"
+                  [xaxis]="stressChartOptions.xaxis"
+                  [stroke]="stressChartOptions.stroke"
+                  [dataLabels]="stressChartOptions.dataLabels"
+                  [yaxis]="stressChartOptions.yaxis"
+                  [labels]="stressChartOptions.labels"
+                  [legend]="stressChartOptions.legend"
+                  [title]="stressChartOptions.title"
+                  [subtitle]="stressChartOptions.subtitle"
+                ></apx-chart>
+              </div>
+            </div>
+          </section>
+
+          <section class="w-4/12 bg-white p-5 rounded">
+            <h1 class="font-semibold text-lg">Risk Description</h1>
+            <div class="flex justify-between mt-2">
+              <p class="text-sm font-medium">Major Risk</p>
+              <p class="text-sm font-medium text-black ml-auto px-2">45</p>
+              <div
+                class="overflow-hidden h-1 w-[20%] rounded text-xs flex bg-[#f3f3f3] mt-2"
+              >
+                <div
+                  class="w-[75%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#D42E2E]"
+                ></div>
+              </div>
+              <!-- #69BD6D -->
+            </div>
+            <p class="text-gray-400 text-sm mt-2">Parameter</p>
+            <h1 class="text-sm font-medium mt-1">PTSD</h1>
+            <p class="text-sm font-medium mt-2 text-gray-400">Description</p>
+            <p class="text-sm">
+              Emoployee has scorded High in PTSD and Falls in 'Risk' as per norm
+            </p>
+            <hr class="mt-2" />
+
+            <div class="flex justify-between mt-2">
+              <p class="text-sm font-medium">Cautionary Risk 1</p>
+              <p class="text-sm font-medium text-black ml-auto px-2">15</p>
+              <div
+                class="overflow-hidden h-1 w-[20%] rounded text-xs flex bg-[#f3f3f3] mt-2"
+              >
+                <div
+                  class="w-[75%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#EDEF79]"
+                ></div>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm mt-2">Parameter</p>
+            <h1 class="text-sm font-medium mt-1">PTSD</h1>
+            <p class="text-sm font-medium mt-2 text-gray-400">Description</p>
+            <p class="text-sm">
+              Emoployee has scorded High in PTSD and Falls in 'Risk' as per norm
+            </p>
+
+            <hr class="mt-2" />
+
+            <div class="flex justify-between mt-2">
+              <p class="text-sm font-medium">Cautionary Risk 1</p>
+              <p class="text-sm font-medium text-black ml-auto px-2">15</p>
+              <div
+                class="overflow-hidden h-1 w-[20%] rounded text-xs flex bg-[#f3f3f3] mt-2"
+              >
+                <div
+                  class="w-[75%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#69BD6D]"
+                ></div>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm mt-2">Parameter</p>
+            <h1 class="text-sm font-medium mt-1">PTSD</h1>
+            <p class="text-sm font-medium mt-2 text-gray-400">Description</p>
+            <p class="text-sm">
+              Emoployee has scorded High in PTSD and Falls in 'Risk' as per norm
+            </p>
+
+            <hr class="mt-2" />
+          </section>
+        </div>
+
+        <div class="flex space-x-5 mx-8 mt-8">
+          <section class="w-3/12 bg-white">
+            <div class="bg-white rounded-lg p-2">
+              <p class="font-semibold text-lg">Wellbeing Score</p>
+              <p
+                class="bg-yellow-200/50 w-14 px-2 py-1.5 text-sm font-medium rounded-sm"
+              >
+                Good
+              </p>
+            </div>
+            <div class="pie">
+              <span class="overlay">
+                <p class="text-5xl font-bold mt-6 text-center">75</p>
+              </span>
+            </div>
+          </section>
+
+          <section class="w-5/12 bg-white p-5">
+            <h1 class="font-semibold text-lg">Therapist Notes</h1>
+            <p class="text-sm mt-3">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
+              maxime, quaerat ipsa pariatur aut delectus voluptate atque
+              voluptatum perferendis nisi perspiciatis deleniti repellat
+              consequatur quia tenetur libero voluptates veritatis cum adipisci
+              blanditiis. Incidunt asperiores dolor illo iste? Quaerat,
+              accusantium tenetur!......<span class="text-sm font-bold"
+                >View More</span
+              >
+            </p>
+
+            <div class="flex">
+              <img
+                src="../../../../assets/img/image 177.svg"
+                class="w-10 h-10 mt-2 rounded-full"
+                alt=""
+              />
+              <div class="ml-3 mt-2">
+                <h1 class="text-sm font-medium">Priya D</h1>
+                <p class="text-black text-xs">Clinical Psychologist</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="w-4/12 bg-white">
+            <div class="flex">
+              <p class="font-semibold mt-2 text-lg pl-5">App selection</p>
+              <select
+                name=""
+                id=""
+                class="bg-white border ml-auto mx-4 mt-2 p-2"
+              >
+                <option value="">select</option>
+              </select>
+            </div>
+            <div class="w-5/12 2xl:ml-20">
+              <apx-chart
+                [series]="chartOptions.series"
+                [chart]="chartOptions.chart"
+                [labels]="chartOptions.labels"
+                [responsive]="chartOptions.responsive"
+                [dataLabels]="chartOptions.dataLabels"
+              ></apx-chart>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Journal -->
+      <div *ngIf="journal" class="mx-4">
+        <div class="flex justify-between">
+          <div class="mt-2">
+            <h1 class="text-[#292929] font-semibold text-xl">All Journal Enter</h1>
+          </div>
+          <div class="flex gap-10">
+            <div>
+              <div class="mb-3 ">
+                <input type="date"  name="date"  id="date"
+                 class="border border-gray-400 bg-white w-[20rem] py-2.5 px-2 rounded-md  " placeholder="search">
+              </div>
+            </div>
+
+
+            <div>
+              <div class=" flex gap-3 ">
+               <button
+                 class="bg-white lg:mr-0 xl:mr-0 sm:mr-2 px-3 py-3 flex
+                  filterBtn rounded-md float-right border border-gray-400 text-[#3C3C43]
+                   text-[16px] leading-[22px] w-[8rem]" (click)="showFilter()" ><p class="ml-2">Filter</p>
+                 <img
+                   class="h-[16px] w-[16px] ml-2 mt-1 "
+                   src="../../../../assets/img/Vector.svg"
+                   alt="filter-svg"
+                 />
+               </button>
+               </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="mx-5" *ngIf="showDroupdown" >
+          <div class="w-[14%] bg-white shadow-xl dropCheck  absolute right-[5.6rem]  p-4 rounded-lg ">
+            <h1 class="text-xl  font-medium" >Filter</h1>
+
+
+
+              <div class="mt-5">
+                <div class="mt-2">
+                  <input type="checkbox" name="app" id="app">
+                  <label for="app" class="text-[#A9A9A9] ml-2"> Bookmarked </label>
+                </div>
+                <div class="mt-2">
+                  <input type="checkbox" name="counselor" id="counselor">
+                  <label for="counselor" class="text-[#A9A9A9] ml-2"> Commented </label>
+                </div>
+                <div class="mt-2">
+                  <input type="checkbox" name="all" id="all">
+                  <label for="all" class="text-[#A9A9A9] ml-2"> Highlighted </label>
+                </div>
+              </div>
+
+            <div class="py-4 mt-3">
+              <button class="w-full bg-[#4E989F] text-white py-2.5 font-semibold rounded-lg">Apply</button>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="journal bg-white shadow-sm rounded-lg p-4 mt-2">
+          <p class="text-gray-400">{{date}}</p>
+          <h1 class="text-[#292929] text-xl font-semibold mt-2">{{heading}}</h1>
+          <p class="text-gray-500 mt-1">{{title}}</p>
+        </div>
+
+        <div class="journal bg-white shadow-sm rounded-lg p-4 mt-4">
+          <p class="text-gray-400">{{date}}</p>
+          <h1 class="text-[#292929] text-xl font-semibold mt-2">{{heading}}</h1>
+          <p class="text-gray-500 mt-1">{{title}}</p>
+        </div>
+        <div class="journal bg-white shadow-sm rounded-lg p-4 mt-4 flex">
+          <div>
+            <p class="text-gray-400">{{date}}</p>
+            <h1 class="text-[#292929] text-xl font-semibold mt-2" routerLink="/journal-detail">{{heading}}</h1>
+            <p class="text-gray-500 mt-1">{{title}}</p>
+          </div>
+          <div>
+            <div class="flex gap-5">
+              <img src="../../../assets/img/-comment-text.svg" class="" alt="" srcset="">
+              <img src="../../../assets/img/icon.svg" class="xl:mr-10" alt="" srcset="">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Homework -->
+      <div *ngIf="homework">
+        <div>
+          <div class="flow-root mx-5">
+            <h3 class="float-left font-semibold text-lg">Homework</h3>
+            <button
+              class="float-right text-primary_color border-primary_color border-2 py-2 font-medium px-6 rounded"
+            >
+              View History
+            </button>
+          </div>
+          <div class="mx-5 mt-5">
+            <app-table
+              [gridData]="homeworkTable_gridData"
+              [colData]="homeworkTable_colData"
+              [settings]="homeworkTable"
+            ></app-table>
+          </div>
+        </div>
+      </div>
+
+      <!-- MSE -->
+      <div *ngIf="mse">
+        <h2 class="px-5 font-bold text-xl">MSE Form</h2>
+        <div class="grid grid-cols-3 m-5">
+          <div>
+            <p class="text-gray-500 font-medium text-sm">Name</p>
+            <p class="font-medium">Matt Dickerson</p>
+          </div>
+          <div>
+            <p class="text-gray-500 font-medium text-sm">Team</p>
+            <p class="font-medium">SSI</p>
+          </div>
+          <div>
+            <p class="text-gray-500 font-medium text-sm">Date</p>
+            <p class="font-medium">09-02-2022</p>
+          </div>
+        </div>
+        <div class="mx-5">
+          <app-table
+            [gridData]="gridData"
+            [colData]="colData"
+            [settings]="settings"
+          ></app-table>
+        </div>
+      </div>
+
+    </div>
+    <div class="flow-root mx-7">
+      <div class="flex  float-left gap-4">
+        <p class="mt-2">Show</p>
+        <select name="" id="" class="bg-[#F5F5F5] px-2 py-2 rounded-md">
+          <option value="1">01</option>
+          <option value="2">02</option>
+          <option value="3">03</option>
+        </select>
+        <p class="mt-2">entries</p>
+      </div>
+      <div class="float-right mt-5 space-x-3 ">
+        <button class="border border-primary_color py-1 px-3 text-primary_color rounded">1</button>
+        <button class="border border-[#F5F5F5] shadow-sm py-1 px-3 bg-[#F5F5F5] rounded">2</button>
+        <button class="border border-[#F5F5F5] shadow-sm py-1 px-3 bg-[#F5F5F5] rounded">3</button>
+        <button class="text-[#9E9E9E]" >Next</button>
+      </div>
+    </div>
+  </div>
+
+</div>

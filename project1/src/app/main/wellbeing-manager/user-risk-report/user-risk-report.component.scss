@@ -1,0 +1,21 @@
+.popup
+{
+  // display: none;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(90, 90, 90, 0.5);
+  z-index: 9999;
+}
+.main
+{
+  transform: translateY(10%);
+}
+
+.shared-with-popup
+{
+  @apply w-56 absolute sm:ml-[12rem] xl:ml-[27rem] 2xl:ml-[55rem] pb-4 pt-8 bg-light_white
+}
